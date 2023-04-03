@@ -79,7 +79,7 @@ function Login() {
         </div>
         <div className="container">
           <span className="psw">
-            Quên <a href="quenmatkhau"> Mật khẩu?</a>
+            Quên <a href="ForgotPassword"> Mật khẩu?</a>
           </span>
           <span className="psw">
             <a href="register">Đăng ký </a>

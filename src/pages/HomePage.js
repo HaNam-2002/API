@@ -1,24 +1,27 @@
-import React from 'react';
-import Header from '../components/header/Header';
-import Footer from '../components/footer/Footer';
-import Banner from '../components/Banner/Banner';
-import Mainmenu from '../components/Menu/Menu';
-import Promo from '../components/promo/promo';
-import MainContent from '../components/mainContent/mainContent';
-import TopSeller from '../components/topSellers/TopSellers';
-function HomePage() { 
-    return (   
-        <div style={{position: 'relative'}}>
-            <Header />
-            <Mainmenu/>
-            <Banner/>
-            <Promo/>
-            <MainContent/>
-            <TopSeller/>
-            {/* <Oppo /> */}
-            <Footer />
-        </div>
-    );
-}
+import React, { useState } from "react";
+import Header from "../components/header/Header";
+import Banner from "../components/Banner/Banner";
+import Footer from "../components/footer/Footer";
+import Menu from "../components/Menu/Menu";
+import AllProduct from "../components/allProduct/allProduct";
 
+function HomePage() {
+  const [searchKeyword, setSearchKeyword] = useState("");
+  const [isSearching, setIsSearching] = useState(false);
+
+  const handleSearch = (keyword) => {
+    setSearchKeyword(keyword);
+    setIsSearching(true);
+  };
+
+  return (
+    <div style={{ position: "relative" }}>
+      <Header />
+      <Menu onSearch={handleSearch} />
+      {isSearching ? null : <Banner />}
+      <AllProduct searchKeyword={searchKeyword} />
+      <Footer />
+    </div>
+  );
+}
 export default HomePage;

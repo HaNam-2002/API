@@ -8,7 +8,6 @@ function DetailPage() {
   return (
     <div style={{ position: "relative" }}>
       <Header />
-      <Mainmenu />
       <div className="site-branding-area product-detail">
         <div className="container">
           <div className="row">

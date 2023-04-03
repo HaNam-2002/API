@@ -14,13 +14,13 @@ function Header() {
             <div className="user-menu">
               <ul>
                 <li>
-                  <a href="a">
-                    <i className="fa fa-user"></i> My Account
+                  <a href="/ChangePass">
+                    <i className="fa fa-user"></i> Đổi mật khẩu 
                   </a>
                 </li>
                 <li>
                   <a href="a">
-                    <i className="fa fa-heart"></i> Wishlist
+                    <i className="fa fa-heart"></i> Yêu thích
                   </a>
                 </li>
                 <li>
