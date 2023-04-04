@@ -3,6 +3,19 @@ import "./Menu.css";
 
 function Menu(props) {
   const [keyword, setKeyword] = useState("");
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    // Fetch categories from API endpoint
+    fetch("http://localhost:8083/categories/all")
+      .then((response) => response.json())
+      .then((data) => {
+        setCategories(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching categories: ", error);
+      });
+  }, []);
 
   const handleInputChange = (event) => {
     setKeyword(event.target.value);
@@ -30,8 +43,7 @@ function Menu(props) {
                   </a>
                 </h1>
               </div>
-            </div>
-
+            </div>{" "}
             <div className="col-sm-6" style={{ width: "70%" }}>
               <div className="shopping-item">
                 <a href="cart.html">
@@ -76,26 +88,22 @@ function Menu(props) {
                   <a href="/">Trang chủ</a>
                 </li>
                 <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="a">
-                    Danh mục sản phẩm <span class="caret"></span>
+                  <a class="dropdown-toggle" data-toggle="dropdown" href="/README.md">
+                  Danh mục sản phẩm <span class="caret"></span>
                   </a>
                   <ul class="dropdown-menu">
-                    <li>
-                      <a href="#">SAMSUNG</a>
-                    </li>
-                    <li>
-                      <a href="#">IPHONE</a>
-                    </li>
-                    <li>
-                      <a href="#">NOKIA</a>
-                    </li>
+                    {categories.map((category) => (
+                      <li key={category.cID}>
+                        <a href="/README.md">{category.cname}</a>
+                      </li>
+                    ))}
                   </ul>
                 </li>
                 <li>
-                  <a href="a">Others</a>
+                  <a href="/README.md">Others</a>
                 </li>
                 <li>
-                  <a href="a">Contact</a>
+                  <a href="/README.md">Contact</a>
                 </li>
               </ul>
             </div>
@@ -105,5 +113,4 @@ function Menu(props) {
     </>
   );
 }
-
 export default Menu;

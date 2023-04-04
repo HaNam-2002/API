@@ -6,29 +6,28 @@ function Login() {
   //login
   const [user, setuser] = useState("");
   const [pass, setpass] = useState("");
-  const [authenticated, setauthenticated] = useState(localStorage.getItem(localStorage.getItem("authenticated")|| false));
+  const [authenticated, setauthenticated] = useState(localStorage.getItem(localStorage.getItem("authenticated") || false));
   const [error, setError] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
     accountService.login(user, pass)
-    .then(data => {
-      if (data.user === user || data.pass === pass) {
-        alert("Tên đăng nhập hoặc mật khẩu không đúng!")
-  }
-   else {
-    setauthenticated(true)
-      localStorage.setItem("authenticated", true);
-      console.log(data);
-      localStorage.setItem("user", data);
-      window.location.href = 'http://localhost:3000'
-   }
-  })
-    ;;
-  };
+      .then(data => {
+        if (data) {
+          setauthenticated(true)
+          localStorage.setItem("authenticated", true);
+          localStorage.setItem("user", JSON.stringify(data));
+          window.location.href = 'http://localhost:3000'
+        } else {
+          localStorage.setItem("authenticated", false);
+          alert("Đăng nhập không thành công!");
+        }
+      })
+      ;;
+  };
   return (
     <div
       style={{
-        display:'flex',
+        display: 'flex',
         background: 'url("assets/img/login.jpg")',
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -38,7 +37,7 @@ function Login() {
     >
       <form className="formLogin" onSubmit={handleSubmit} method="post">
         <div className="textcontainer">
-         <h1 className="titleText">ĐĂNG NHẬP</h1>
+          <h1 className="titleText">ĐĂNG NHẬP</h1>
         </div>
 
         <div className="container">
@@ -51,8 +50,8 @@ function Login() {
             placeholder="Nhập tên đăng nhâp"
             name="user"
             required
-            value={user}
-            onChange={(e) => setuser(e.target.value)}
+            value={user}
+            onChange={(e) => setuser(e.target.value)}
           />
 
           <label for="pass">

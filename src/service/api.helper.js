@@ -1,6 +1,7 @@
 import {API_URL} from '../core/utils/constant'
 
 function ApiHelper(url, data = {}, method = 'POST') {
+    console.log(data);
     let bearer = 'Bearer ' + localStorage.getItem('user_token');
     return fetch(API_URL.dev + url, {  // Return promise
         method: method,
@@ -10,8 +11,9 @@ function ApiHelper(url, data = {}, method = 'POST') {
             'Authorization': bearer,
             'X-FP-API-KEY': 'chaptoken',
             'Content-Type': 'application/json'
-        }
-    }, data)
+        },
+        body: JSON.stringify(data)
+    })
         .then(res => res ? res.json() : null)
         .then((result) => {
             return result;

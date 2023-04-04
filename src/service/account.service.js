@@ -3,7 +3,7 @@ import {api} from "./api.helper";
 const url = "accounts";
 
 function login(user, pass) {
-    return api.ApiHelper(url + `/login?user=${user}&pass=${pass}`, {}, 'POST');
+    return api.ApiHelper(url + `/login`, { user: user, pass: pass }, 'POST');
 }
 
 function register(body) {

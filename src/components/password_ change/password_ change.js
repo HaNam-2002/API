@@ -1,6 +1,40 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
 import "./password_ change.css";
-function passwordChange() {
+
+function PasswordChange() {
+  const [oldPassword, setOldPassword] = useState("");
+  const [newPassword, setNewPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const [error, setError] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    // Kiểm tra mật khẩu mới và mật khẩu xác nhận
+    if (newPassword !== confirmPassword) {
+      setError("Mật khẩu xác nhận không khớp!");
+      return;
+    }
+    // Gửi yêu cầu API đến server.
+    axios
+      .put(
+        "http://localhost:8083/accounts/changePassword/" + JSON.parse(window.localStorage.getItem('user')).uID,
+        {
+          oldPassword,
+          newPassword,
+        }
+      )
+      .then((response) => {
+        console.log(response);
+        alert("Đổi mật khẩu thành công!");
+      })
+      .catch((error) => {
+        console.log(error);
+        setError("Đổi mật khẩu thất bại!");
+      });
+  };
+
   return (
     <div
       style={{
@@ -12,47 +46,54 @@ function passwordChange() {
         height: "100vh",
       }}
     >
-      <form className="formLogin" method="post">
+      <form className="formLogin" onSubmit={handleSubmit}>
         <div className="textcontainer">
           <h1 className="titleText">Đổi mật khẩu</h1>
         </div>
 
         <div className="container">
-          <label for="pass">
+          <label htmlFor="oldPassword">
             <b>Mật khẩu cũ</b>
           </label>
           <input
-            id="pass"
+            id="oldPassword"
             type="password"
             placeholder="Mật khẩu cũ"
-            name="pass"
+            name="oldPassword"
+            value={oldPassword}
+            onChange={(event) => setOldPassword(event.target.value)}
             required
           />
-          <label for="pass">
+          <label htmlFor="newPassword">
             <b>Mật khẩu mới</b>
           </label>
           <input
-            id="pass"
+            id="newPassword"
             type="password"
             placeholder="Mật khẩu mới"
-            name="pass"
+            name="newPassword"
+            value={newPassword}
+            onChange={(event) => setNewPassword(event.target.value)}
             required
           />
-           <label for="pass">
+          <label htmlFor="confirmPassword">
             <b>Xác nhận mật khẩu</b>
           </label>
           <input
-            id="pass"
+            id="confirmPassword"
             type="password"
             placeholder="Xác nhận mật khẩu"
-            name="pass"
-            required       
+            name="confirmPassword"
+            value={confirmPassword}
+            onChange={(event) => setConfirmPassword(event.target.value)}
+            required
           />
-          <button type="submit">Xong</button>
+          {error && <div className="error">{error}</div>}
+          <button type="submit">Xong
+          </button>
         </div>
       </form>
     </div>
   );
 }
-
-export default passwordChange;
+export default PasswordChange;

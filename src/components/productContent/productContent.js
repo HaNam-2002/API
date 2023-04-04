@@ -1,29 +1,18 @@
 import React, { useState, useEffect } from "react";
-import { productService } from "../../service/product.service";
 
 function ProductContent(props) {
-
-  const queryParams = new URLSearchParams(window.location.search)
-  const id = queryParams.get("id")
-
   const [product, setProduct] = useState([]);
   useEffect(() => {
-    if (id) {
-      productService.findById(id).then(data => { 
-        setProduct(data);
-      });
-      // fetch('http://localhost:8083/products/' + id)
-      // .then(response => response.json()) //convert data api to json
-      // .then(data => {
-      //   setProduct(data);
-      //   console.log(data);
-      // })
-    }
-    else {
-      window.location.href = '/';
+    const queryParams = new URLSearchParams(window.location.search);
+    const pID = queryParams.get('id');
+    if(pID) {
+      fetch(`http://localhost:8083/products/${pID}`)
+      .then(response => response.json())
+      .then(data => setProduct(data));
+    } else {
+      window.location.href = "/";
     }
   });
-
   return (
     <div className="col-md-8">
       <div className="product-content-right">
@@ -35,7 +24,7 @@ function ProductContent(props) {
           <div className="col-sm-6">
             <div className="product-images">
               <div className="product-main-img">
-                <img src={product.image} alt="" />
+                 <img src={product.image} alt="" /> 
               </div>
 
               <div className="product-gallery">
@@ -291,3 +280,9 @@ function ProductContent(props) {
 
 export default ProductContent;
 // dòng16
+// fetch('http://localhost:8083/products/' + id)
+      // .then(response => response.json()) //convert data api to json
+      // .then(data => {
+      //   setProduct(data);
+      //   console.log(data);
+      // })
