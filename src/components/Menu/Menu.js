@@ -103,7 +103,7 @@ function Menu(props) {
                   <a href="/README.md">Others</a>
                 </li>
                 <li>
-                  <a href="/README.md">Contact</a>
+                  <a href="/src/components/Contact/contact.html">Contact</a>
                 </li>
               </ul>
             </div>
