@@ -10,6 +10,8 @@ function Register() {
     address: '',
   });
 
+  const [errorMessage, setErrorMessage] = useState(null);
+
   const handleChange = (event) => {
     const { name, value } = event.target;
     setFormData((prevState) => ({ ...prevState, [name]: value }));
@@ -24,7 +26,12 @@ function Register() {
       },
       body: JSON.stringify(formData),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (response.ok) {
+          return response.json();
+        }
+        throw new Error('Network response was not ok');
+      })
       .then((data) => {
         console.log('Success:', data);
         alert('Đăng ký thành công')
@@ -32,10 +39,10 @@ function Register() {
       })
       .catch((error) => {
         console.error('Error:', error);
-        alert('Đăng ký thất bại');
+       const message = 'Tên tài khoản đã tồn tại';
+       alert(message);
       });
   };
-
   return (
     <div
       style={{

@@ -17,7 +17,7 @@ function ProductContent(props) {
     <div className="col-md-8">
       <div className="product-content-right">
         <div className="product-breadcroumb">
-          <a href="home">Home</a>
+          <a href="http://localhost:3000/">Home</a>
           <a href="a">Category Name</a>
         </div>
         <div className="row">
@@ -62,9 +62,9 @@ function ProductContent(props) {
 
               <div className="product-inner-category">
                 <p>
-                  Category: <a href="a">Summer</a>. Tags:{" "}
+                  Category: <a href="a">Iphone</a>. Tags:{" "}
                   <a href="a">awesome</a>, <a href="a">best</a>,{" "}
-                  <a href="a">sale</a>, <a href="a">shoes</a>.{" "}
+                  <a href="a">sale</a>, <a href="a">phone</a>.{" "}
                 </p>
               </div>
 

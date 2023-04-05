@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-
 function AllProduct({ searchKeyword })  {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
