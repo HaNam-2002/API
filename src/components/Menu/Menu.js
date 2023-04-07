@@ -9,6 +9,18 @@ function Menu(props) {
     setKeyword(event.target.value);
   };
 
+  useEffect(() => {
+    // Fetch categories from API endpoint
+    fetch("http://localhost:8083/categories/all")
+      .then((response) => response.json())
+      .then((data) => {
+        setCategories(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching categories: ", error);
+      });
+  }, []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     props.onSearch(keyword);

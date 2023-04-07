@@ -3,6 +3,7 @@ function AllProduct({ searchKeyword })  {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   useEffect(() => {
+    // nam code
     fetch('http://localhost:8083/products')
       .then(response => response.json())
       .then(data => {
