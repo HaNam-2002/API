@@ -16,7 +16,7 @@ function Menu(props) {
         console.error("Error fetching categories: ", error);
       });
   }, []);
-
+  console.log('git console.log');
   const handleInputChange = (event) => {
     setKeyword(event.target.value);
   };
