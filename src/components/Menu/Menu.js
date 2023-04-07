@@ -16,7 +16,7 @@ function Menu(props) {
         console.error("Error fetching categories: ", error);
       });
   }, []);
-  console.log('máy laptop console')
+
   const handleInputChange = (event) => {
     setKeyword(event.target.value);
   };
