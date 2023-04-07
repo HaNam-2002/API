@@ -5,18 +5,6 @@ function Menu(props) {
   const [keyword, setKeyword] = useState("");
   const [categories, setCategories] = useState([]);
 
-  useEffect(() => {
-    // Fetch categories from API endpoint
-    fetch("http://localhost:8083/categories/all")
-      .then((response) => response.json())
-      .then((data) => {
-        setCategories(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching categories: ", error);
-      });
-  }, []);
-
   const handleInputChange = (event) => {
     setKeyword(event.target.value);
   };
@@ -103,7 +91,7 @@ function Menu(props) {
                   <a href="/README.md">Others</a>
                 </li>
                 <li>
-                  <a href="/src/components/Contact/contact.html">Contact</a>
+                  <a href="/README.md">Contact</a>
                 </li>
               </ul>
             </div>
