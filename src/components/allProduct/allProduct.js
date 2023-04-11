@@ -1,18 +1,18 @@
-import React, { useState, useEffect } from 'react';
-function AllProduct({ searchKeyword })  {
+import React, { useState, useEffect } from "react";
+function AllProduct({ searchKeyword }) {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   useEffect(() => {
-    fetch('http://localhost:8083/products')
-      .then(response => response.json())
-      .then(data => {
+    fetch("http://localhost:8083/products")
+      .then((response) => response.json())
+      .then((data) => {
         setProducts(data);
         setFilteredProducts(data);
       })
-      .catch(error => console.error(error));
+      .catch((error) => console.error(error));
   }, []);
   useEffect(() => {
-    const filtered = products.filter(product =>
+    const filtered = products.filter((product) =>
       product.name.toLowerCase().includes(searchKeyword.toLowerCase())
     );
     setFilteredProducts(filtered);
@@ -22,7 +22,7 @@ function AllProduct({ searchKeyword })  {
       <div className="zigzag-bottom"></div>
       <div className="container">
         <div className="row">
-        {filteredProducts.map(product => (
+          {filteredProducts.map((product) => (
             <div className="col-md-3 col-sm-6" key={product.pID}>
               <div className="single-shop-product">
                 <div className="product-upper">
@@ -32,7 +32,7 @@ function AllProduct({ searchKeyword })  {
                   <a href={"/detail?id=" + product.pID}>{product.name}</a>
                 </h2>
                 <div className="product-carousel-price">
-                  <ins>{product.price}$</ins> 
+                  <ins>{product.price}$</ins>
                 </div>
 
                 <div className="product-option-shop">
@@ -51,7 +51,6 @@ function AllProduct({ searchKeyword })  {
             </div>
           ))}
         </div>
-
 
         <div className="row">
           <div className="col-md-12">
@@ -85,7 +84,7 @@ function AllProduct({ searchKeyword })  {
                   </li>
                 </ul>
               </nav>
-              </div>
+            </div>
           </div>
         </div>
       </div>

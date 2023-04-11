@@ -3,10 +3,11 @@ import "./App.css";
 import HomePage from "./pages/HomePage";
 import RegisterPage from "./pages/RegisterPage";
 import DetailPage from "./pages/DetailPage";
-import ForgotPassPage from "./pages/ForgotPassPage"
-import ChangePass from "./pages/ChangePassPage"
+import ForgotPassPage from "./pages/ForgotPassPage";
+import ChangePass from "./pages/ChangePassPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/login/Login";
+import ContactPage from "./pages/ContactPage";
 
 function App() {
   return (
@@ -28,10 +29,12 @@ function App() {
           <Route path="/detail" element={<DetailPage />} />
         </Routes>
         <Routes>
-          <Route path="/ChangePass" element={<ChangePass/>} />
+          <Route path="/ChangePass" element={<ChangePass />} />
+        </Routes>
+        <Routes>
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </Router>
-      
     </div>
   );
 }

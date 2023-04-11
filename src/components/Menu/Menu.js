@@ -88,8 +88,12 @@ function Menu(props) {
                   <a href="/">Trang chủ</a>
                 </li>
                 <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="/README.md">
-                  Danh mục sản phẩm <span class="caret"></span>
+                  <a
+                    class="dropdown-toggle"
+                    data-toggle="dropdown"
+                    href="/README.md"
+                  >
+                    Danh mục sản phẩm <span class="caret"></span>
                   </a>
                   <ul class="dropdown-menu">
                     {categories.map((category) => (
@@ -100,10 +104,7 @@ function Menu(props) {
                   </ul>
                 </li>
                 <li>
-                  <a href="/README.md">Others</a>
-                </li>
-                <li>
-                  <a href="/src/components/Contact/contact.html">Contact</a>
+                  <a href="/contact">Contact</a>
                 </li>
               </ul>
             </div>
