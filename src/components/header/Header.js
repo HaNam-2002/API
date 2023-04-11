@@ -1,7 +1,7 @@
 import React from "react";
 
 function Header() {
-  const isLogin = localStorage.getItem('authenticated');
+  const isLogin = localStorage.getItem("authenticated");
 
   function logout() {
     localStorage.clear();
@@ -15,7 +15,7 @@ function Header() {
               <ul>
                 <li>
                   <a href="/ChangePass">
-                    <i className="fa fa-user"></i> Đổi mật khẩu 
+                    <i className="fa fa-user"></i> Đổi mật khẩu
                   </a>
                 </li>
                 <li>
@@ -34,11 +34,25 @@ function Header() {
                   </a>
                 </li>
                 <li>
-                  { isLogin ? (
-                    <a href="/" onClick={logout}>Logout</a>
+                  {isLogin ? (
+                    <a href="/" onClick={logout}>
+                      Logout
+                    </a>
                   ) : (
-                    <a href="login"><i className="fa fa-user"></i> Login</a> 
+                    <a href="login">
+                      <i className="fa fa-user"></i> Login
+                    </a>
                   )}
+                </li>
+                <li>
+                  <a href="checkout.html">
+                    <i className="fa fa-user"></i> Thêm sản phẩm
+                  </a>
+                </li>
+                <li>
+                  <a href="checkout.html">
+                    <i className="fa fa-user"></i> Xoá sản phẩm
+                  </a>
                 </li>
               </ul>
             </div>
