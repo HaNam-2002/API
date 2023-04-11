@@ -46,12 +46,7 @@ function Header() {
                 </li>
                 <li>
                   <a href="checkout.html">
-                    <i className="fa fa-user"></i> Thêm sản phẩm
-                  </a>
-                </li>
-                <li>
-                  <a href="checkout.html">
-                    <i className="fa fa-user"></i> Xoá sản phẩm
+                    <i className="fa fa-user"></i> Quản lý shop
                   </a>
                 </li>
               </ul>
