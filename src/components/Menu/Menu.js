@@ -4,7 +4,6 @@ import "./Menu.css";
 function Menu(props) {
   const [keyword, setKeyword] = useState("");
   const [categories, setCategories] = useState([]);
-
   useEffect(() => {
     // Fetch categories from API endpoint
     fetch("http://localhost:8083/categories/all")
@@ -15,7 +14,7 @@ function Menu(props) {
       .catch((error) => {
         console.error("Error fetching categories: ", error);
       });
-  }, []);
+  }, []); // đúng vs mình 
 
   const handleInputChange = (event) => {
     setKeyword(event.target.value);
@@ -25,7 +24,6 @@ function Menu(props) {
     event.preventDefault();
     props.onSearch(keyword);
   };
-
   return (
     <>
       <div className="site-branding-area">

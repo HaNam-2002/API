@@ -2,12 +2,16 @@ import React, { useState, useEffect } from "react";
 function AllProduct({ searchKeyword }) {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
+  // cấu hình routing: http://localhost:3000/:search -> trang chủ
+  // lấy search ra -> không có: get all
+  // nếu có có: search
   useEffect(() => {
     fetch("http://localhost:8083/products")
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);
         setFilteredProducts(data);
+        setProducts(data); // lấy tất cả -> search
       })
       .catch((error) => console.error(error));
   }, []);
