@@ -6,12 +6,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-body {
+.background {
   background: linear-gradient(to bottom, #e2eefb 0%, #474b4c 100%);
   font-size: 12px;
 }
 
-body,
 button,
 input {
   font-family: "Montserrat", sans-serif;
