@@ -8,6 +8,8 @@ import ChangePass from "./pages/ChangePassPage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Login from "./components/login/Login";
 import ContactPage from "./pages/ContactPage";
+import ProductManagerPage from "./pages/AdminPages/ProductManagerPage";
+import CartManagerPage from "./pages/AdminPages/CartManagerPage";
 
 function App() {
   return (
@@ -24,6 +26,12 @@ function App() {
         </Routes>
         <Routes>
           <Route path="/login" element={<Login />} />
+        </Routes>
+        <Routes>
+          <Route path="/manager" element={<ProductManagerPage />} />
+        </Routes>
+        <Routes>
+          <Route path="/cart_manager" element={<CartManagerPage />} />
         </Routes>
         <Routes>
           <Route path="/detail" element={<DetailPage />} />

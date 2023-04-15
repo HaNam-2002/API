@@ -45,7 +45,7 @@ function Header() {
                   )}
                 </li>
                 <li>
-                  <a href="checkout.html">
+                  <a href="manager">
                     <i className="fa fa-user"></i> Quản lý shop
                   </a>
                 </li>
