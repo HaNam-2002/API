@@ -42,13 +42,9 @@ function AllProduct({ searchKeyword }) {
                 <div className="product-option-shop">
                   <a
                     className="add_to_cart_button"
-                    data-quantity="1"
-                    data-product_sku=""
-                    data-product_id="70"
-                    rel="nofollow"
-                    href="/canvas/shop/?add-to-cart=70"
+                    href={"/detail?id=" + product.pID}
                   >
-                    Add to cart
+                    Xem
                   </a>
                 </div>
               </div>

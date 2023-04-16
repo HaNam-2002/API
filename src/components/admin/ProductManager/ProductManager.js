@@ -29,7 +29,7 @@ function ProductManager() {
         Thêm sản phẩm
       </button>
       <ProductTable />
-      <div id="id01" className="w3-modal">
+      <div id="id01" className="w3-modal" style={{ paddingTop: "50px" }}>
         <div className="w3-modal-content w3-card-4 w3-animate-zoom">
           <header className="w3-container w3-blue">
             <span

@@ -4,11 +4,11 @@ function ProductContent(props) {
   const [product, setProduct] = useState([]);
   useEffect(() => {
     const queryParams = new URLSearchParams(window.location.search);
-    const pID = queryParams.get('id');
-    if(pID) {
+    const pID = queryParams.get("id");
+    if (pID) {
       fetch(`http://localhost:8083/products/${pID}`)
-      .then(response => response.json())
-      .then(data => setProduct(data));
+        .then((response) => response.json())
+        .then((data) => setProduct(data));
     } else {
       window.location.href = "/";
     }
@@ -24,7 +24,7 @@ function ProductContent(props) {
           <div className="col-sm-6">
             <div className="product-images">
               <div className="product-main-img">
-                 <img src={product.image} alt="" /> 
+                <img src={product.image} alt="Lỗi" />
               </div>
 
               <div className="product-gallery">
@@ -42,7 +42,7 @@ function ProductContent(props) {
                 <ins>${product.price}</ins> <del>${product.price * 1.5}</del>
               </div>
 
-              <form action="" className="cart">
+              <form action="cart" className="cart">
                 <div className="quantity">
                   <input
                     type="number"
@@ -56,7 +56,7 @@ function ProductContent(props) {
                   />
                 </div>
                 <button className="add_to_cart_button" type="submit">
-                  Add to cart
+                  Mua ngay
                 </button>
               </form>
 
@@ -98,9 +98,7 @@ function ProductContent(props) {
                     id="home"
                   >
                     <h2>Product Description</h2>
-                    <p>
-                     {product.description}
-                    </p>
+                    <p>{product.description}</p>
                   </div>
                   <div role="tabpanel" className="tab-pane fade" id="profile">
                     <h2>Reviews</h2>
@@ -143,136 +141,6 @@ function ProductContent(props) {
             </div>
           </div>
         </div>
-
-        <div className="related-products-wrapper">
-          <h2 className="related-products-title">Related Products</h2>
-          <div className="related-products-carousel">
-            <div className="single-product">
-              <div className="product-f-image">
-                <img src="./assets/img/product-1.jpg" alt="" />
-                <div className="product-hover">
-                  <a href="a" className="add-to-cart-link">
-                    <i className="fa fa-shopping-cart"></i> Add to cart
-                  </a>
-                  <a href="a" className="view-details-link">
-                    <i className="fa fa-link"></i> See details
-                  </a>
-                </div>
-              </div>
-
-              <h2>
-                <a href="a">Sony Smart TV - 2015</a>
-              </h2>
-
-              <div className="product-carousel-price">
-                <ins>$700.00</ins> <del>$100.00</del>
-              </div>
-            </div>
-            <div className="single-product">
-              <div className="product-f-image">
-                <img src="./assets/img/product-2.jpg" alt="" />
-                <div className="product-hover">
-                  <a href="a" className="add-to-cart-link">
-                    <i className="fa fa-shopping-cart"></i> Add to cart
-                  </a>
-                  <a href="a" className="view-details-link">
-                    <i className="fa fa-link"></i> See details
-                  </a>
-                </div>
-              </div>
-
-              <h2>
-                <a href="a">Apple new mac book 2015 March :P</a>
-              </h2>
-              <div className="product-carousel-price">
-                <ins>$899.00</ins> <del>$999.00</del>
-              </div>
-            </div>
-            <div className="single-product">
-              <div className="product-f-image">
-                <img src="./assets/img/product-3.jpg" alt="" />
-                <div className="product-hover">
-                  <a href="a" className="add-to-cart-link">
-                    <i className="fa fa-shopping-cart"></i> Add to cart
-                  </a>
-                  <a href="a" className="view-details-link">
-                    <i className="fa fa-link"></i> See details
-                  </a>
-                </div>
-              </div>
-
-              <h2>
-                <a href="a">Apple new i phone 6</a>
-              </h2>
-
-              <div className="product-carousel-price">
-                <ins>$400.00</ins> <del>$425.00</del>
-              </div>
-            </div>
-            <div className="single-product">
-              <div className="product-f-image">
-                <img src="./assets/img/product-4.jpg" alt="" />
-                <div className="product-hover">
-                  <a href="a" className="add-to-cart-link">
-                    <i className="fa fa-shopping-cart"></i> Add to cart
-                  </a>
-                  <a href="a" className="view-details-link">
-                    <i className="fa fa-link"></i> See details
-                  </a>
-                </div>
-              </div>
-
-              <h2>
-                <a href="a">Sony playstation microsoft</a>
-              </h2>
-
-              <div className="product-carousel-price">
-                <ins>$200.00</ins> <del>$225.00</del>
-              </div>
-            </div>
-            <div className="single-product">
-              <div className="product-f-image">
-                <img src="./assets/img/product-5.jpg" alt="" />
-                <div className="product-hover">
-                  <a href="a" className="add-to-cart-link">
-                    <i className="fa fa-shopping-cart"></i> Add to cart
-                  </a>
-                  <a href="a" className="view-details-link">
-                    <i className="fa fa-link"></i> See details
-                  </a>
-                </div>
-              </div>
-
-              <h2>
-                <a href="a">Sony Smart Air Condtion</a>
-              </h2>
-
-              <div className="product-carousel-price">
-                <ins>$1200.00</ins> <del>$1355.00</del>
-              </div>
-            </div>
-            <div className="single-product">
-              <div className="product-f-image">
-                <img src="./assets/img/product-6.jpg" alt="" />
-                <div className="product-hover">
-                  <a href="a" className="add-to-cart-link">
-                    <i className="fa fa-shopping-cart"></i> Add to cart
-                  </a>
-                  <a href="a" className="view-details-link">
-                    <i className="fa fa-link"></i> See details
-                  </a>
-                </div>
-              </div>
-              <h2>
-                <a href="a">Samsung gallaxy note 4</a>
-              </h2>
-
-              <div className="product-carousel-price">
-                <ins>$400.00</ins>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
     </div>
   );
@@ -281,8 +149,8 @@ function ProductContent(props) {
 export default ProductContent;
 // dòng16
 // fetch('http://localhost:8083/products/' + id)
-      // .then(response => response.json()) //convert data api to json
-      // .then(data => {
-      //   setProduct(data);
-      //   console.log(data);
-      // })
+// .then(response => response.json()) //convert data api to json
+// .then(data => {
+//   setProduct(data);
+//   console.log(data);
+// })

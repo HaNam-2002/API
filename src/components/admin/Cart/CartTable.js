@@ -6,23 +6,26 @@ function CartTable() {
     <table>
       <tr>
         <th>MSP</th>
-        <th>THƯƠNG HIỆU</th>
         <th>HÌNH ẢNH</th>
         <th>TÊN SẢN PHẨM</th>
-        <th>TRẠNG THÁI</th>
+        <th>THÔNG TIN KHÁCH HÀNG</th>
         <th>LỜI NHẮN</th>
         <th>SỐ LƯỢNG</th>
         <th>TỔNG TIỀN</th>
+        <th>NGÀY ĐẶT</th>
+        <th style={{ width: "8%" }}>TRẠNG THÁI</th>
       </tr>
       <CartRow
-        msp="01"
-        th="XIAOMI"
+        msp="1"
         imgUrl="https://cdn.mobilecity.vn/mobilecity-vn/images/2022/10/w300/xiaomi-redmi-note-12-xanh.png.webp"
-        name="Điện thoại Xiaomi Redmi Note 12"
-        status="Chưa hoàn thành"
-        message="Xiaomi Redmi Note 12 5G được trình làng vào ngày 27/10/2022. Ngoài sở hữu thiết kế đẹp mắt, máy còn có thông số kỹ thuật ấn tượng: Chip mạnh hỗ trợ 5G, màn hình siêu đẹp, pin trâu camera chất lượng. Trong các mẫu điện thoại Note 12 Series, Redmi Note 12 là sản phẩm chủ đạo kỳ vọng mang lại doanh thu cực đỉnh cho hãng."
-        quantity="2"
-        price="10.000.000đ"
+        name="Xiaomiiiiii"
+        customer_name="Nguyễn Thanh Minh"
+        numberPhone="0123456742"
+        inf="25-27 Ngô Văn Sở, Hoà Khánh Nam, Liên Chiểu, Đà Nẵng"
+        message="Cho thì lấy chứ không mua"
+        quantity="3"
+        price="15.000.000"
+        order_date="16/03/2023"
       />
     </table>
   );

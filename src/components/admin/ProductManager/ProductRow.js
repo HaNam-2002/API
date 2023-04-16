@@ -25,7 +25,7 @@ function ProductRow(props) {
           </button>
         </td>
       </tr>
-      <div id="id02" className="w3-modal">
+      <div id="id02" className="w3-modal" style={{ paddingTop: "0px" }}>
         <div className="w3-modal-content w3-card-4 w3-animate-zoom">
           <header className="w3-container w3-blue">
             <span

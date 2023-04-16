@@ -11,6 +11,7 @@ import ContactPage from "./pages/ContactPage";
 import ProductManagerPage from "./pages/AdminPages/ProductManagerPage";
 import CartManagerPage from "./pages/AdminPages/CartManagerPage";
 import CategoryManagerPage from "./pages/AdminPages/CategoryManagerPage";
+import CartPage from "./pages/Cartpage";
 
 function App() {
   return (
@@ -39,6 +40,9 @@ function App() {
         </Routes>
         <Routes>
           <Route path="/detail" element={<DetailPage />} />
+        </Routes>
+        <Routes>
+          <Route path="/cart" element={<CartPage />} />
         </Routes>
         <Routes>
           <Route path="/ChangePass" element={<ChangePass />} />

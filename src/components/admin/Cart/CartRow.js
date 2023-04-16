@@ -5,15 +5,30 @@ function CartRow(props) {
     <>
       <tr>
         <td>{props.msp}</td>
-        <td>{props.th}</td>
         <td>
-          <img src={props.imgUrl} alt="Lỗi" />
+          <img className="img_product" src={props.imgUrl} alt="Lỗi" />
         </td>
         <td>{props.name}</td>
-        <td>{props.status}</td>
+        <td>
+          <p style={{ textAlign: "start", marginLeft: "10px" }}>
+            Tên:
+            {props.customer_name}
+          </p>
+          <p style={{ textAlign: "start", marginLeft: "10px" }}>
+            Số điện thoại:
+            {props.numberPhone}
+          </p>
+          <p style={{ textAlign: "start", marginLeft: "10px" }}>
+            Địa chỉ: {props.inf}
+          </p>
+        </td>
         <td>{props.message}</td>
         <td>{props.quantity}</td>
-        <td>{props.price}</td>
+        <td>{props.price}đ</td>
+        <td>{props.order_date}</td>
+        <td>
+          <button className="w3-yellow">Xác nhận</button>
+        </td>
       </tr>
     </>
   );
