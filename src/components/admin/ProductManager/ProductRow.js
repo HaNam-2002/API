@@ -7,7 +7,7 @@ function ProductRow(props) {
         <td>{props.msp}</td>
         <td>{props.th}</td>
         <td>
-          <img src={props.imgUrl} alt="Lỗi" />
+          <img className="image_edit" src={props.imgUrl} alt="Lỗi" />
         </td>
         <td>{props.name}</td>
         <td>{props.title}</td>
@@ -42,6 +42,7 @@ function ProductRow(props) {
             <form className="w3-container w3-card-4" action="">
               <div className="image_edit">
                 <img
+                  className="image_edit"
                   src="https://cdn.mobilecity.vn/mobilecity-vn/images/2022/10/w300/xiaomi-redmi-note-12-xanh.png.webp"
                   alt="lỗi"
                 />

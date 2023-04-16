@@ -61,6 +61,7 @@ function ProductManager() {
               {image && (
                 <p className="image_edit">
                   <img
+                    className="img_product"
                     src={image}
                     alt="Selected image"
                     style={{ maxWidth: "150px" }}

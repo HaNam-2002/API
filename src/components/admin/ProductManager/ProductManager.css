@@ -19,7 +19,7 @@ tr:nth-child(even) {
 textarea {
   background-color: #f1f1f1;
 }
-img {
+.img_product {
   width: 200px;
 }
 .title {

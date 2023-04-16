@@ -10,6 +10,7 @@ import Login from "./components/login/Login";
 import ContactPage from "./pages/ContactPage";
 import ProductManagerPage from "./pages/AdminPages/ProductManagerPage";
 import CartManagerPage from "./pages/AdminPages/CartManagerPage";
+import CategoryManagerPage from "./pages/AdminPages/CategoryManagerPage";
 
 function App() {
   return (
@@ -32,6 +33,9 @@ function App() {
         </Routes>
         <Routes>
           <Route path="/cart_manager" element={<CartManagerPage />} />
+        </Routes>
+        <Routes>
+          <Route path="/cate_manager" element={<CategoryManagerPage />} />
         </Routes>
         <Routes>
           <Route path="/detail" element={<DetailPage />} />

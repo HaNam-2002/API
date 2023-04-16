@@ -12,14 +12,11 @@ function SideBar() {
       <a href="cart_manager" className="w3-bar-item w3-button">
         <i className="fa fa-shopping-cart"></i>
       </a>
-      <a href="#" className="w3-bar-item w3-button">
-        <i className="fa fa-envelope"></i>
+      <a href="cate_manager" className="w3-bar-item w3-button">
+        <i className="fa fa-trademark"></i>
       </a>
-      <a href="#" className="w3-bar-item w3-button">
-        <i className="fa fa-globe"></i>
-      </a>
-      <a href="#" className="w3-bar-item w3-button">
-        <i className="fa fa-trash"></i>
+      <a href="/" className="w3-bar-item w3-button">
+        <i className="fa fa-sign-out"></i>
       </a>
     </div>
   );
