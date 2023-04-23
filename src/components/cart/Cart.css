@@ -1,0 +1,125 @@
+.product-item {
+  display: flex;
+  align-items: center;
+}
+
+.imgsp {
+  margin-right: 10px;
+  margin-top: 20px;
+}
+.imgsp img {
+  width: 100px;
+  height: 100px;
+}
+
+.infosp-name-product {
+  margin-right: 10px;
+}
+.btn-delete {
+  width: 50%;
+  height: 20px;
+  display: block;
+  margin: auto;
+  text-align: center;
+  background-color: red;
+  color: white;
+  border: none;
+  margin-top: 10px;
+  border-radius: 4px;
+  padding: 5px 5px;
+  cursor: pointer;
+  font-size: 10px;
+}
+
+.btn-delete:hover {
+  background-color: #c70000;
+}
+
+.infosp-name-product {
+  margin-bottom: 10px;
+}
+.infosp-name h3 {
+  margin-bottom: 40px;
+}
+.number-buttons {
+  display: flex;
+  align-items: center;
+}
+.infosp-price {
+  margin-left: 325px;
+}
+.infosp-price h4 {
+  color: #c70000;
+  font-weight: bold;
+}
+.select-color {
+  width: 100%;
+  max-width: 300px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.select-color::after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 8px solid transparent;
+  border-top-color: #000;
+}
+
+.select-color select {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  padding: 10px;
+  background-color: transparent;
+  border: none;
+  font-size: 16px;
+  color: #555;
+  cursor: pointer;
+}
+
+.select-color option {
+  background-color: #fff;
+  color: #555;
+}
+
+.choose-number input[type="text"] {
+  display: flex;
+  width: 60px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+}
+.choose-number button {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+}
+.listing-cart li {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
+.tong_Tien {
+  display: flex;
+  justify-content: space-between;
+}
+.tong_Tien_text {
+  padding-left: 50px;
+  font-weight: bold;
+}
+.tong_Tien_price {
+  margin-right: 70px;
+  color: #c70000;
+}
+.line {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 10px;
+}
