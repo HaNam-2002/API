@@ -1,11 +1,26 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./ProductManager.css";
 function ProductRow(props) {
+  const [products, setProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const deleteProduct = (pID) => {
+    fetch(`http://localhost:8083/products/delete/${pID}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        console.log(response);
+        setProducts(products.filter(product => product.id !== pID));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  
   return (
     <>
       <tr>
-        <td>{props.msp}</td>
-        <td>{props.th}</td>
+        <td>{props.id}</td>
+        <td>{props.categories}</td>
         <td>
           <img className="image_edit" src={props.imgUrl} alt="Lỗi" />
         </td>
@@ -14,7 +29,7 @@ function ProductRow(props) {
         <td>{props.description}</td>
         <td>{props.price}</td>
         <td>
-          <button className="w3-red">Xoá</button>
+          <button className="w3-red" onClick={() =>props.onDeleteProduct(props.id)}>Xoá</button>
           <button
             className="w3-green"
             onClick={() =>

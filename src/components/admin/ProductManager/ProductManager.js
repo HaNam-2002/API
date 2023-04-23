@@ -1,21 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import ProductTable from "./ProductTable";
 import "./ProductManager.css";
 
 function ProductManager() {
   const [image, setImage] = useState(null);
+  const [categories, setCategories] = useState([]);
 
   const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    const reader = new FileReader();
-
-    reader.onloadend = () => {
-      setImage(reader.result);
-    };
-
-    reader.readAsDataURL(file);
+    const imgage = event.target.value;
+    setImage(imgage);
   };
+  useEffect(() => {
+    fetch("http://localhost:8083/categories/all")
+      .then((response) => response.json())
+      .then((data) => {
+        setCategories(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching categories: ", error);
+      });
+  }, []);
 
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const data = new FormData(form);
+    data.append("imgUrl", image); // Thêm Image URL vào FormData
+    fetch("http://localhost:8083/products/add", {
+      method: "POST",
+      body: JSON.stringify(Object.fromEntries(data)),
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(response => {
+        if (response.ok) {
+          alert("Sản phẩm đã được thêm thành công!");
+          form.reset();
+          setImage(null);
+        } else {
+          alert("Có lỗi xảy ra khi thêm sản phẩm.");
+        }
+      })
+      .catch(error => {
+        alert("Có lỗi xảy ra khi thêm sản phẩm.");
+      });
+  };
   return (
     <div style={{ marginLeft: "70px" }}>
       <div className="w3-container"></div>
@@ -43,25 +73,23 @@ function ProductManager() {
             <h2 className="title">THÊM SẢN PHẨM</h2>
           </header>
           <div className="w3-container w3-light-grey w3-padding">
-            <form className="w3-container w3-card-4" action="">
+            <form className="w3-container w3-card-4" onSubmit={handleSubmit}>
               <p>
                 <label className="w3-text-blue">
-                  <b>Chọn hình ảnh</b>
+                  <b>Image URL</b>
                 </label>
                 <input
                   className="w3-input"
-                  type="file"
-                  id="myFile"
-                  name="filename"
-                  accept="image/*"
-                  onChange={handleImageChange}
+                  type="text"
+                  name="image"
                   required
+                  onChange={handleImageChange}
                 />
               </p>
               {image && (
                 <p className="image_edit">
                   <img
-                    className="img_product"
+                    className="image"
                     src={image}
                     alt="Selected image"
                     style={{ maxWidth: "150px" }}
@@ -70,49 +98,67 @@ function ProductManager() {
               )}
               <p>
                 <label className="w3-text-blue">
-                  <b>Tên sản phẩm</b>
+                  <b>Name</b>
                 </label>
                 <input
-                  className="w3-input w3-border"
-                  name="name_product"
+                  className="w3-input"
                   type="text"
+                  name="name"
                   required
                 />
               </p>
               <p>
                 <label className="w3-text-blue">
-                  <b>Tiêu đề</b>
+                  <b>Price</b>
                 </label>
                 <input
-                  className="w3-input w3-border"
-                  name="title"
-                  type="text"
+                  className="w3-input"
+                  type="number"
+                  name="price"
                   required
                 />
               </p>
               <p>
                 <label className="w3-text-blue">
-                  <b>Miêu tả</b>
+                  <b>Description</b>
                 </label>
                 <textarea
-                  className="w3-input w3-border"
-                  name="description"
+                  className="w3-input"
                   type="text"
+                  name="description"
+                  required
                 ></textarea>
               </p>
               <p>
                 <label className="w3-text-blue">
-                  <b>Giá</b>
+                  <b>Title</b>
                 </label>
                 <input
-                  className="w3-input w3-border"
-                  name="price"
+                  className="w3-input"
                   type="text"
+                  name="title"
                   required
                 />
               </p>
               <p>
-                <button className="w3-btn w3-blue">XONG</button>
+                <label className="w3-text-blue">
+                  <b>Loại sản phẩm</b>
+                </label>
+                <select className="w3-select" name="category" required>
+                  <option value="" disabled selected hidden>
+                    Categories
+                  </option>
+                  {categories.map((category) => (
+                    <option key={category.id} value={category.id}>
+                      {category.cname}
+                    </option>
+                  ))}
+                </select>
+              </p>
+              <p className="w3-center">
+                <button className="button w3-blue" type="submit">
+                  Thêm sản phẩm
+                </button>
               </p>
             </form>
           </div>
@@ -122,4 +168,4 @@ function ProductManager() {
   );
 }
 
-export default ProductManager;
+export default ProductManager;  

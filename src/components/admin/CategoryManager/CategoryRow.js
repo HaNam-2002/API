@@ -1,12 +1,13 @@
 import React from "react";
 import "./CategoryManager.css";
+
 function CategoryRow(props) {
   return (
     <>
       <tr>
-        <td>{props.stt}</td>
-        <td>{props.tdm}</td>
-        <td style={{ width: "20%" }}>
+        <td>{props.cID}</td>
+        <td>{props.cname}</td>
+        <td style={{ width: "40%" }}>
           <button className="w3-red">Xoá</button>
           <button
             className="w3-green"

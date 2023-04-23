@@ -14,7 +14,7 @@ function Menu(props) {
       .catch((error) => {
         console.error("Error fetching categories: ", error);
       });
-  }, []); // đúng vs mình 
+  }, []); 
 
   const handleInputChange = (event) => {
     setKeyword(event.target.value);

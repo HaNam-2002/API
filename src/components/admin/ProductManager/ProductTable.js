@@ -1,47 +1,80 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ProductRow from "./ProductRow";
 import "./ProductManager.css";
+
 function ProductTable() {
+  const [products, setProducts] = useState([]);
+  const [filteredProducts, setFilteredProducts] = useState([]);
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:8083/products")
+      .then((response) => response.json())
+      .then((data) => {
+        setProducts(data);
+        setFilteredProducts(data);
+      })
+      .catch((error) => console.error(error));
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:8083/categories/all")
+      .then((response) => response.json())
+      .then((data) => {
+        setCategories(data);
+      })
+      .catch((error) => {
+        console.error("Error fetching categories: ", error);
+      });
+  }, []);
+
+  function handleDeleteProduct(pID) {
+    fetch(`http://localhost:8083/products/delete/${pID}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        console.log(response);
+        setProducts(products.filter(product => product.id !== pID));
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+
   return (
-    <table>
-      <tr>
-        <th>MSP</th>
-        <th>THƯƠNG HIỆU</th>
-        <th>HÌNH ẢNH</th>
-        <th>TÊN SẢN PHẨM</th>
-        <th>TIÊU ĐỀ</th>
-        <th>MIÊU TẢ</th>
-        <th>GIÁ</th>
-        <th></th>
-      </tr>
-      <ProductRow
-        msp="01"
-        th="XIAOMI"
-        imgUrl="https://cdn.mobilecity.vn/mobilecity-vn/images/2022/10/w300/xiaomi-redmi-note-12-xanh.png.webp"
-        name="Điện thoại Xiaomi Redmi Note 12"
-        title="Thời gian bảo hành: BH Thường 12 Tháng"
-        description="Xiaomi Redmi Note 12 5G được trình làng vào ngày 27/10/2022. Ngoài sở hữu thiết kế đẹp mắt, máy còn có thông số kỹ thuật ấn tượng: Chip mạnh hỗ trợ 5G, màn hình siêu đẹp, pin trâu camera chất lượng. Trong các mẫu điện thoại Note 12 Series, Redmi Note 12 là sản phẩm chủ đạo kỳ vọng mang lại doanh thu cực đỉnh cho hãng."
-        price="5.000.000đ"
-      />{" "}
-      <ProductRow
-        msp="01"
-        th="XIAOMI"
-        imgUrl="https://cdn.mobilecity.vn/mobilecity-vn/images/2022/10/w300/xiaomi-redmi-note-12-xanh.png.webp"
-        name="Điện thoại Xiaomi Redmi Note 12"
-        title="Thời gian bảo hành: BH Thường 12 Tháng"
-        description="Xiaomi Redmi Note 12 5G được trình làng vào ngày 27/10/2022. Ngoài sở hữu thiết kế đẹp mắt, máy còn có thông số kỹ thuật ấn tượng: Chip mạnh hỗ trợ 5G, màn hình siêu đẹp, pin trâu camera chất lượng. Trong các mẫu điện thoại Note 12 Series, Redmi Note 12 là sản phẩm chủ đạo kỳ vọng mang lại doanh thu cực đỉnh cho hãng."
-        price="5.000.000đ"
-      />
-      <ProductRow
-        msp="01"
-        th="XIAOMI"
-        imgUrl="https://cdn.mobilecity.vn/mobilecity-vn/images/2022/10/w300/xiaomi-redmi-note-12-xanh.png.webp"
-        name="Điện thoại Xiaomi Redmi Note 12"
-        title="Thời gian bảo hành: BH Thường 12 Tháng"
-        description="Xiaomi Redmi Note 12 5G được trình làng vào ngày 27/10/2022. Ngoài sở hữu thiết kế đẹp mắt, máy còn có thông số kỹ thuật ấn tượng: Chip mạnh hỗ trợ 5G, màn hình siêu đẹp, pin trâu camera chất lượng. Trong các mẫu điện thoại Note 12 Series, Redmi Note 12 là sản phẩm chủ đạo kỳ vọng mang lại doanh thu cực đỉnh cho hãng."
-        price="5.000.000đ"
-      />
-    </table>
+    <div>
+      <ul></ul>
+      <table>
+        <thead>
+          <tr>
+            <th className="id" >pID</th>
+            <th className="categories" >Categories</th>
+            <th className="img">Image</th>
+            <th className="name">Name</th>
+            <th className="title">Title</th>
+            <th className="description">Description</th>
+            <th className="price">Price</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {filteredProducts.map((product, index) => (
+            <ProductRow
+              key={product.id}
+              id={product.pID}
+              categories={index === 0 ? product.categories : ''}
+              imgUrl={product.image}
+              name={product.name}
+              title={product.title}
+              description={product.description}
+              price={product.price}
+              onDeleteProduct={handleDeleteProduct}
+            />
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 }
+
 export default ProductTable;
