@@ -7,7 +7,7 @@ function CategoryRow(props) {
       <tr>
         <td>{props.cID}</td>
         <td>{props.cname}</td>
-        <td style={{ width: "40%" }}>
+        <td>
           <button className="w3-red">Xoá</button>
           <button
             className="w3-green"
@@ -19,6 +19,7 @@ function CategoryRow(props) {
           </button>
         </td>
       </tr>
+       
       <div id="id03" className="w3-modal">
         <div className="w3-modal-content w3-card-4 w3-animate-zoom">
           <header className="w3-container w3-blue">
@@ -57,3 +58,5 @@ function CategoryRow(props) {
 }
 
 export default CategoryRow;
+// dòng 23-55 sai :v 1 row mà render ra 34 dòng thì chết dở :))
+// bỏ file ni đi he

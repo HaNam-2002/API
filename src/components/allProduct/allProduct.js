@@ -11,7 +11,6 @@ function AllProduct({ searchKeyword }) {
       .then((data) => {
         setProducts(data);
         setFilteredProducts(data);
-        setProducts(data); // lấy tất cả -> search
       })
       .catch((error) => console.error(error));
   }, []);

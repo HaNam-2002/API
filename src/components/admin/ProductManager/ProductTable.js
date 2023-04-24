@@ -2,30 +2,18 @@ import React, { useState, useEffect } from "react";
 import ProductRow from "./ProductRow";
 import "./ProductManager.css";
 
-function ProductTable() {
+function ProductTable( {categories}) {
   const [products, setProducts] = useState([]);
-  const [filteredProducts, setFilteredProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
+
 
   useEffect(() => {
     fetch("http://localhost:8083/products")
       .then((response) => response.json())
       .then((data) => {
+        console.log(data)
         setProducts(data);
-        setFilteredProducts(data);
       })
       .catch((error) => console.error(error));
-  }, []);
-
-  useEffect(() => {
-    fetch("http://localhost:8083/categories/all")
-      .then((response) => response.json())
-      .then((data) => {
-        setCategories(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching categories: ", error);
-      });
   }, []);
 
   function handleDeleteProduct(pID) {
@@ -33,7 +21,8 @@ function ProductTable() {
       method: "DELETE",
     })
       .then((response) => {
-        console.log(response);
+        window.location.reload();
+        alert("Xóa sản phẩm thành công!");
         setProducts(products.filter(product => product.id !== pID));
       })
       .catch((error) => {
@@ -48,7 +37,7 @@ function ProductTable() {
         <thead>
           <tr>
             <th className="id" >pID</th>
-            <th className="categories" >Categories</th>
+            <th className="category">Categories</th>
             <th className="img">Image</th>
             <th className="name">Name</th>
             <th className="title">Title</th>
@@ -58,17 +47,12 @@ function ProductTable() {
           </tr>
         </thead>
         <tbody>
-          {filteredProducts.map((product, index) => (
+          {products.map((product, index) => (
             <ProductRow
-              key={product.id}
-              id={product.pID}
-              categories={index === 0 ? product.categories : ''}
-              imgUrl={product.image}
-              name={product.name}
-              title={product.title}
-              description={product.description}
-              price={product.price}
-              onDeleteProduct={handleDeleteProduct}
+            product={product}
+            categories={categories} // sao hay vậy đcm nhìn thấy k hạp lý xí mô, bên kia có 3 thằng thì bne ni truyền 3 tăhằng thôi :))
+            onDeleteProduct={handleDeleteProduct}
+            key={product.pid}
             />
           ))}
         </tbody>

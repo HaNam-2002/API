@@ -1,35 +1,56 @@
 import React, { useState, useEffect } from "react";
+import { json } from "react-router-dom";
 import "./ProductManager.css";
-function ProductRow(props) {
-  const [products, setProducts] = useState([]);
-  const [categories, setCategories] = useState([]);
-  const deleteProduct = (pID) => {
-    fetch(`http://localhost:8083/products/delete/${pID}`, {
-      method: "DELETE",
+function ProductRow({product, categories, onDeleteProduct}) { // ý ở đây thì sẽ gọi cái products bên kia đã set data rồi qua đây để data có thông tin của thằng product để get cái pID ra cùng với categories
+  //  const [categories, setCategories] = useState([]);
+  const [image, setImage] = useState(null);
+  const handleImageChange = (event) => {
+    const imgage = event.target.value;
+    setImage(imgage);
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const data = new FormData(form);
+    console.log(data)
+    data.append("imgUrl", image); // Thêm Image URL vào FormData
+    fetch(`http://localhost:8083/products/update/${product.pid}/${data.get('cID')}`, {
+      method: "PUT",
+      body: JSON.stringify(Object.fromEntries(data)),
+      headers: {
+        "Content-Type": "application/json"
+      }
     })
-      .then((response) => {
-        console.log(response);
-        setProducts(products.filter(product => product.id !== pID));
+      .then(response => {
+        if (response.ok) {   
+          alert("Sửa sản phẩm thành công!");
+          window.location.reload();
+          form.reset();
+          setImage(null);
+        } else {
+          alert("Có lỗi xảy ra khi sửa sản phẩm.");
+        }
       })
-      .catch((error) => {
-        console.error(error);
+      .catch(error => {
+        alert("Có lỗi xảy ra khi thêm sản phẩm.");
       });
   };
   
   return (
     <>
       <tr>
-        <td>{props.id}</td>
-        <td>{props.categories}</td>
+        <td>{product.pid}</td>
+        <td>{product.category.cname}</td>
         <td>
-          <img className="image_edit" src={props.imgUrl} alt="Lỗi" />
+          <img className="image_edit" src={product.image} alt="Lỗi" />
         </td>
-        <td>{props.name}</td>
-        <td>{props.title}</td>
-        <td>{props.description}</td>
-        <td>{props.price}</td>
+        <td>{product.name}</td>
+        <td>{product.title}</td>
+        <td>{product.description}</td>
+        <td>{product.price}</td>
         <td>
-          <button className="w3-red" onClick={() =>props.onDeleteProduct(props.id)}>Xoá</button>
+          <button className="w3-red" onClick={() =>onDeleteProduct(product.pid)}>Xoá</button>
           <button
             className="w3-green"
             onClick={() =>
@@ -40,6 +61,7 @@ function ProductRow(props) {
           </button>
         </td>
       </tr>
+      {/* Sửa modal :(((( )))) */}
       <div id="id02" className="w3-modal" style={{ paddingTop: "0px" }}>
         <div className="w3-modal-content w3-card-4 w3-animate-zoom">
           <header className="w3-container w3-blue">
@@ -54,59 +76,93 @@ function ProductRow(props) {
             <h2 className="title">SỬA SẢN PHẨM</h2>
           </header>
           <div className="w3-container w3-light-grey w3-padding">
-            <form className="w3-container w3-card-4" action="">
-              <div className="image_edit">
-                <img
-                  className="image_edit"
-                  src="https://cdn.mobilecity.vn/mobilecity-vn/images/2022/10/w300/xiaomi-redmi-note-12-xanh.png.webp"
-                  alt="lỗi"
-                />
-              </div>
+            <form className="w3-container w3-card-4" onSubmit={handleSubmit}>
               <p>
                 <label className="w3-text-blue">
-                  <b>Tên sản phẩm</b>
+                  <b>Image URL</b>
                 </label>
                 <input
-                  className="w3-input w3-border"
-                  name="name_product"
+                  className="w3-input"
                   type="text"
+                  name="image"
+                  required
+                  onChange={handleImageChange}
+                />
+              </p>
+              {image && (
+                <p className="image_edit">
+                  <img
+                    className="image"
+                    src={image}
+                    alt="Selected image"
+                    style={{ maxWidth: "150px" }}
+                  />
+                </p>
+              )}
+              <p>
+                <label className="w3-text-blue">
+                  <b>Name</b>
+                </label>
+                <input
+                  className="w3-input"
+                  type="text"
+                  name="name"
                   required
                 />
               </p>
               <p>
                 <label className="w3-text-blue">
-                  <b>Tiêu đề</b>
+                  <b>Price</b>
                 </label>
                 <input
-                  className="w3-input w3-border"
-                  name="title"
-                  type="text"
+                  className="w3-input"
+                  type="number"
+                  name="price"
                   required
                 />
               </p>
               <p>
                 <label className="w3-text-blue">
-                  <b>Miêu tả</b>
+                  <b>Description</b>
                 </label>
                 <textarea
-                  className="w3-input w3-border"
-                  name="description"
+                  className="w3-input"
                   type="text"
+                  name="description"
+                  required
                 ></textarea>
               </p>
               <p>
                 <label className="w3-text-blue">
-                  <b>Giá</b>
+                  <b>Title</b>
                 </label>
                 <input
-                  className="w3-input w3-border"
-                  name="price"
+                  className="w3-input"
                   type="text"
+                  name="title"
                   required
                 />
               </p>
               <p>
-                <button className="w3-btn w3-blue">XONG</button>
+                <label className="w3-text-blue">
+                  <b>Loại sản phẩm</b>
+                </label>
+                <select className="w3-select" name="cID" required>
+                  <option value="" disabled selected hidden>
+                    Categories
+                  </option>
+                  {categories.map((category) => (
+                    <option key={category.id} value={category.cid}>
+                      {category.cname}
+                    </option>
+                  ))}
+                </select>
+              </p>
+              <p className="w3-center">
+                <button className="button w3-blue" type="submit">
+                  Thêm sản phẩm
+                </button>
+                
               </p>
             </form>
           </div>

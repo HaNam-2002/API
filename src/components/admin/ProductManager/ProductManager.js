@@ -26,7 +26,7 @@ function ProductManager() {
     const form = event.target;
     const data = new FormData(form);
     data.append("imgUrl", image); // Thêm Image URL vào FormData
-    fetch("http://localhost:8083/products/add", {
+    fetch(`http://localhost:8083/products/add?cID=${data.get('cID')}`, {
       method: "POST",
       body: JSON.stringify(Object.fromEntries(data)),
       headers: {
@@ -34,8 +34,9 @@ function ProductManager() {
       }
     })
       .then(response => {
-        if (response.ok) {
+        if (response.ok) {   
           alert("Sản phẩm đã được thêm thành công!");
+          window.location.reload();
           form.reset();
           setImage(null);
         } else {
@@ -58,7 +59,7 @@ function ProductManager() {
       >
         Thêm sản phẩm
       </button>
-      <ProductTable />
+      <ProductTable categories={categories} />
       <div id="id01" className="w3-modal" style={{ paddingTop: "50px" }}>
         <div className="w3-modal-content w3-card-4 w3-animate-zoom">
           <header className="w3-container w3-blue">
@@ -144,12 +145,12 @@ function ProductManager() {
                 <label className="w3-text-blue">
                   <b>Loại sản phẩm</b>
                 </label>
-                <select className="w3-select" name="category" required>
+                <select className="w3-select" name="cID" required>
                   <option value="" disabled selected hidden>
                     Categories
                   </option>
                   {categories.map((category) => (
-                    <option key={category.id} value={category.id}>
+                    <option key={category.id} value={category.cid}>
                       {category.cname}
                     </option>
                   ))}
@@ -159,6 +160,7 @@ function ProductManager() {
                 <button className="button w3-blue" type="submit">
                   Thêm sản phẩm
                 </button>
+                
               </p>
             </form>
           </div>
