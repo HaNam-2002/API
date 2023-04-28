@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
-import { json } from "react-router-dom";
+import React, { useState } from "react";
 import "./ProductManager.css";
-function ProductRow({product, categories, onDeleteProduct}) { // ý ở đây thì sẽ gọi cái products bên kia đã set data rồi qua đây để data có thông tin của thằng product để get cái pID ra cùng với categories
-  //  const [categories, setCategories] = useState([]);
+function ProductRow({product, categories, onDeleteProduct}) { 
   const [image, setImage] = useState(null);
   const handleImageChange = (event) => {
     const imgage = event.target.value;
@@ -13,7 +11,9 @@ function ProductRow({product, categories, onDeleteProduct}) { // ý ở đây th
     event.preventDefault();
     const form = event.target;
     const data = new FormData(form);
+    const pid = data.get('pID')
     console.log(data)
+    console.log(product)
     data.append("imgUrl", image); // Thêm Image URL vào FormData
     fetch(`http://localhost:8083/products/update/${product.pid}/${data.get('cID')}`, {
       method: "PUT",
@@ -61,7 +61,6 @@ function ProductRow({product, categories, onDeleteProduct}) { // ý ở đây th
           </button>
         </td>
       </tr>
-      {/* Sửa modal :(((( )))) */}
       <div id="id02" className="w3-modal" style={{ paddingTop: "0px" }}>
         <div className="w3-modal-content w3-card-4 w3-animate-zoom">
           <header className="w3-container w3-blue">
@@ -160,7 +159,7 @@ function ProductRow({product, categories, onDeleteProduct}) { // ý ở đây th
               </p>
               <p className="w3-center">
                 <button className="button w3-blue" type="submit">
-                  Thêm sản phẩm
+                  Sửa sản phẩm
                 </button>
                 
               </p>

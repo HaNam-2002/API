@@ -4,8 +4,6 @@ import "./ProductManager.css";
 
 function ProductTable( {categories}) {
   const [products, setProducts] = useState([]);
-
-
   useEffect(() => {
     fetch("http://localhost:8083/products")
       .then((response) => response.json())
@@ -28,7 +26,7 @@ function ProductTable( {categories}) {
       .catch((error) => {
         console.error(error);
       });
-  }
+  };
 
   return (
     <div>
@@ -49,10 +47,11 @@ function ProductTable( {categories}) {
         <tbody>
           {products.map((product, index) => (
             <ProductRow
-            product={product}
-            categories={categories} // sao hay vậy đcm nhìn thấy k hạp lý xí mô, bên kia có 3 thằng thì bne ni truyền 3 tăhằng thôi :))
-            onDeleteProduct={handleDeleteProduct}
             key={product.pid}
+            product={product}
+            categories={categories} 
+            onDeleteProduct={handleDeleteProduct}
+            
             />
           ))}
         </tbody>

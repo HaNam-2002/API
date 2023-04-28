@@ -1,25 +1,65 @@
 import React, { useState, useEffect } from "react";
 import "./CategoryManager.css";
 
-function CategoryTable({categories}) {
-  // const [filteredCategories, setfilteredCategories] = useState([]);
-  // const [categories, setCategories] = useState([]);
+function CategoryTable(category) {
 
-  // useEffect(() => {
-  //   async function fetchData() {
-  //     try {
-  //       const response = await fetch("http://localhost:8083/categories/all");
-  //       const data = await response.json();
-  //       setCategories(data);
-  //       setfilteredCategories(data);
-  //     } catch (error) {
-  //       console.error("Error fetching categories: ", error);
-  //     }
-  //   }
-  //   fetchData();
-  // }, []);
+  const [selectedIndex, setSelectedIndex] = useState(null);
+  const [categories, setCategories] = useState([]);
+  useEffect(() => {
+    fetch("http://localhost:8083/categories/all")
+      .then((response) => response.json())
+      .then((data) => {
+        setCategories(data);
+        console.log(categories);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
+
+  const handleDeleteCategory = (cID) => {
+    fetch(`http://localhost:8083/categories/delete/${cID}`, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        alert("Xóa danh mục thành công!");
+        window.location.reload();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+  const handleUpdate = (index, updatedCategory) => {
+    const cid = categories[index].cid;
+    fetch(`http://localhost:8083/categories/update/${cid}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(updatedCategory)
+    })
+    .then(response => {
+      if (response.ok) {
+        alert("Sửa sản phẩm thành công!");
+        window.location.reload();
+      } else {
+        alert("Có lỗi xảy ra khi sửa sản phẩm.");
+      }
+    })
+      .then(data => console.log(data))
+      .catch(error => console.log(error));
+  };
+
+  const handleEditCategory = (index) => {
+    const updatedCategory = {
+      cname: document.getElementsByName("cname")[0].value
+    }
+    handleUpdate(index, updatedCategory);
+    document.getElementById("id03").style.display = "none";
+  }
+
   return (
-    <table className="table" style={{width: "100%"}}>
+    <table className="table" style={{ width: "100%" }}>
       <thead>
         <tr>
           <th className="cID" style={{ width: "20%" }} >cID</th>
@@ -29,22 +69,22 @@ function CategoryTable({categories}) {
       </thead>
       <tbody>
         {categories.map((category, index) => (
-          <tr>
-            <td>{category.cID}</td>
+          <tr key={index}>
+            <td>{category.cid}</td>
             <td>{category.cname}</td>
-          <td>
-            <button className="w3-red">Xoá</button>
-            <button 
-              className="w3-green"
-              onClick={() =>
-                (document.getElementById("id03").style.display = "block")
-              }
-            >
-              Sửa
-            </button>
-          </td>
-        </tr>
-          // <CategoryRow key={category.id} cID={category.cID} cname={category.cname} />
+            <td>
+              <button className="w3-red" onClick={() => handleDeleteCategory(category.cid)}>Xóa</button>
+              <button
+                className="w3-green"
+                onClick={() => {
+                  document.getElementById("id03").style.display = "block";
+                  setSelectedIndex(index);
+                }}
+              >
+                Sửa
+              </button>
+            </td>
+          </tr>
         ))}
       </tbody>
 
@@ -62,14 +102,14 @@ function CategoryTable({categories}) {
             <h2 className="title">SỬA DANH MỤC</h2>
           </header>
           <div className="w3-container w3-light-grey w3-padding">
-            <form className="w3-container w3-card-4" action="">
+            <form className="w3-container w3-card-4" onSubmit={() => handleEditCategory(selectedIndex)}>
               <p>
                 <label className="w3-text-blue">
                   <b>Tên danh mục</b>
                 </label>
                 <input
                   className="w3-input w3-border"
-                  name="name_product"
+                  name="cname"
                   type="text"
                   required
                 />

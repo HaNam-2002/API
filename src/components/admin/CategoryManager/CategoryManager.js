@@ -27,16 +27,21 @@ const CategoryManager = () => {
         "Content-Type": "application/json",
       },
     })
-      .then((response) =>  response.json())
-      .then((data) => {
-        setCategories([...categories, data]);
-        alert('Thêm thành công');
+    .then(response => {
+      if (response.ok) {   
+        alert("Thêm sản phẩm thành công!");
+        window.location.reload();
+        form.reset();
+     
+      } else {
+        alert("Có lỗi xảy ra khi sửa sản phẩm.");
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      alert('Thêm mới thất bại');
+    });
         setShowAddModal(false);
-      })
-      .catch((error) => {
-        console.error(error);
-        alert('Thêm mới thất bại');
-      });
   };
 
   return (
@@ -47,15 +52,14 @@ const CategoryManager = () => {
         Thêm danh mục
       </button>
       <div className="table_cate">
-        <CategoryTable categories={categories} />
-        
+        <CategoryTable categories={categories} 
+        />  
       </div>
       <div
         id="addModal"
         className="w3-modal"
         style={{ display: showAddModal ? "block" : "none" }}
       >
-        {/* begin:Thêm danh mục */}
         <div className="w3-modal-content w3-card-4 w3-animate-zoom">
           <header className="w3-container w3-blue">
             <span
@@ -87,7 +91,6 @@ const CategoryManager = () => {
             </form>
           </div>
         </div>
-         {/* end:Thêm danh mục */}
       </div>
     </div>
   );
