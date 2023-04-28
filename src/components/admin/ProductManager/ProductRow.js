@@ -1,20 +1,21 @@
 import React, { useState } from "react";
 import "./ProductManager.css";
 function ProductRow({product, categories, onDeleteProduct,products}) { 
-  const [image, setImage] = useState(null);
+  const [imageUrl, setImageUrl] = useState(null);
+  const [pid, setPId] = useState(product.pid);
   const handleImageChange = (event) => {
-    const imgage = event.target.value;
-    setImage(imgage);
+    const image = event.target.value;
+    setImageUrl(image);
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
     const data = new FormData(form);
-    console.log(data)
-    console.log(product)
-    data.append("imgUrl", image); // Thêm Image URL vào FormData
-    fetch(`http://localhost:8083/products/update/${product.pid}/${data.get('cID')}`, {
+    console.log(pid);
+    // console.log(data)
+    // data.append("imgUrl", image); // Thêm Image URL vào FormData
+    fetch(`http://localhost:8083/products/update/${pid}/${data.get('cID')}`, {
       method: "PUT",
       body: JSON.stringify(Object.fromEntries(data)),
       headers: {
@@ -26,7 +27,7 @@ function ProductRow({product, categories, onDeleteProduct,products}) {
           alert("Sửa sản phẩm thành công!");
           window.location.reload();
           form.reset();
-          setImage(null);
+          setImageUrl(null);
         } else {
           alert("Có lỗi xảy ra khi sửa sản phẩm.");
         }
@@ -75,6 +76,8 @@ function ProductRow({product, categories, onDeleteProduct,products}) {
           </header>
           <div className="w3-container w3-light-grey w3-padding">
             <form className="w3-container w3-card-4" onSubmit={handleSubmit}>
+
+              {/* <input type="hidden" name="pid" value={product.pid} /> */}
               <p>
                 <label className="w3-text-blue">
                   <b>Image URL</b>
@@ -82,16 +85,16 @@ function ProductRow({product, categories, onDeleteProduct,products}) {
                 <input
                   className="w3-input"
                   type="text"
-                  name="image"
+                  name="imageUrl"
                   required
                   onChange={handleImageChange}
                 />
               </p>
-              {image && (
+              {imageUrl && (
                 <p className="image_edit">
                   <img
                     className="image"
-                    src={image}
+                    src={imageUrl}
                     alt="Selected image"
                     style={{ maxWidth: "150px" }}
                   />
@@ -105,6 +108,7 @@ function ProductRow({product, categories, onDeleteProduct,products}) {
                   className="w3-input"
                   type="text"
                   name="name"
+                  value={product.name}
                   required
                 />
               </p>
@@ -116,6 +120,7 @@ function ProductRow({product, categories, onDeleteProduct,products}) {
                   className="w3-input"
                   type="number"
                   name="price"
+                  value={product.price}
                   required
                 />
               </p>
@@ -127,6 +132,7 @@ function ProductRow({product, categories, onDeleteProduct,products}) {
                   className="w3-input"
                   type="text"
                   name="description"
+                  value={product.description}
                   required
                 ></textarea>
               </p>
@@ -138,6 +144,7 @@ function ProductRow({product, categories, onDeleteProduct,products}) {
                   className="w3-input"
                   type="text"
                   name="title"
+                  value={product.title}
                   required
                 />
               </p>

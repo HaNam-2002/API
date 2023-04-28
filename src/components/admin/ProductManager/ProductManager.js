@@ -160,7 +160,6 @@ function ProductManager() {
                 <button className="button w3-blue" type="submit">
                   Thêm sản phẩm
                 </button>
-                
               </p>
             </form>
           </div>
