@@ -4,6 +4,8 @@ import "./ProductManager.css";
 
 function ProductTable( {categories}) {
   const [products, setProducts] = useState([]);
+
+
   useEffect(() => {
     fetch("http://localhost:8083/products")
       .then((response) => response.json())
@@ -26,7 +28,7 @@ function ProductTable( {categories}) {
       .catch((error) => {
         console.error(error);
       });
-  };
+  }
 
   return (
     <div>
@@ -34,7 +36,7 @@ function ProductTable( {categories}) {
       <table>
         <thead>
           <tr>
-            <th className="id" >pID</th>
+            <th className="pid" >pID</th>
             <th className="category">Categories</th>
             <th className="img">Image</th>
             <th className="name">Name</th>
@@ -45,13 +47,12 @@ function ProductTable( {categories}) {
           </tr>
         </thead>
         <tbody>
-          {products.map((product, index) => (
+          {products.map((product) => (
             <ProductRow
-            key={product.pid}
             product={product}
             categories={categories} 
             onDeleteProduct={handleDeleteProduct}
-            
+            key={product.pid}
             />
           ))}
         </tbody>

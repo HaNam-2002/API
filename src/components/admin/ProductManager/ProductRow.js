@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./ProductManager.css";
-function ProductRow({product, categories, onDeleteProduct}) { 
+function ProductRow({product, categories, onDeleteProduct,products}) { 
   const [image, setImage] = useState(null);
   const handleImageChange = (event) => {
     const imgage = event.target.value;
@@ -11,7 +11,6 @@ function ProductRow({product, categories, onDeleteProduct}) {
     event.preventDefault();
     const form = event.target;
     const data = new FormData(form);
-    const pid = data.get('pID')
     console.log(data)
     console.log(product)
     data.append("imgUrl", image); // Thêm Image URL vào FormData
