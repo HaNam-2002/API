@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-function AllProduct({ searchKeyword }) {
+function AllProduct({ searchKeyword, product }) {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -8,6 +8,7 @@ function AllProduct({ searchKeyword }) {
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);
+        console.log(products);
         setFilteredProducts(data);
       })
       .catch((error) => console.error(error));
@@ -30,7 +31,7 @@ function AllProduct({ searchKeyword }) {
                   <img src={product.image} alt="" />
                 </div>
                 <h2>
-                  <a href={"/detail?id=" + product.pID}>{product.name}</a>
+                  <a href={"/detail?id=" + product.pid}>{product.name}</a>
                 </h2>
                 <div className="product-carousel-price">
                   <ins>{product.price}$</ins>
