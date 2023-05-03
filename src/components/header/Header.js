@@ -49,6 +49,11 @@ function Header() {
                     <i className="fa fa-user"></i> Quản lý shop
                   </a>
                 </li>
+                <li>
+                  <a href="contact">
+                    <i className="fa fa-user"></i> Contact
+                  </a>
+                </li>
               </ul>
             </div>
           </div>

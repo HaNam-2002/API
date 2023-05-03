@@ -11,8 +11,8 @@
   font-size: 12px;
 }
 
-button,
-input {
+.app-form-button,
+.app-form-control {
   font-family: "Montserrat", sans-serif;
   font-weight: 700;
   letter-spacing: 1.4px;

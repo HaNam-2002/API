@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import "./category.css";
 function Category({ onCategoryClick }) {
   const [categories, setCategories] = useState([]);
   const [filteredCategories, setFilteredCategories] = useState([]);
@@ -22,19 +22,6 @@ function Category({ onCategoryClick }) {
     <div className="mainmenu-area">
       <div className="container">
         <div className="row">
-          <div className="navbar-header">
-            <button
-              type="button"
-              className="navbar-toggle"
-              data-toggle="collapse"
-              data-target=".navbar-collapse"
-            >
-              <span className="sr-only">Toggle navigation</span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-              <span className="icon-bar"></span>
-            </button>
-          </div>
           <div className="navbar-collapse collapse">
             <ul className="nav navbar-nav">
               {filteredCategories.map((category) => (

@@ -6,28 +6,28 @@ function Login() {
   //login
   const [user, setuser] = useState("");
   const [pass, setpass] = useState("");
-  const [authenticated, setauthenticated] = useState(localStorage.getItem(localStorage.getItem("authenticated") || false));
+  const [authenticated, setauthenticated] = useState(
+    localStorage.getItem(localStorage.getItem("authenticated") || false)
+  );
   const [error, setError] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-    accountService.login(user, pass)
-      .then(data => {
-        if (data) {
-          setauthenticated(true)
-          localStorage.setItem("authenticated", true);
-          localStorage.setItem("user", JSON.stringify(data));
-          window.location.href = 'http://localhost:3000'
-        } else {
-          localStorage.setItem("authenticated", false);
-          alert("Đăng nhập không thành công!");
-        }
-      })
-      ;;
+    accountService.login(user, pass).then((data) => {
+      if (data) {
+        setauthenticated(true);
+        localStorage.setItem("authenticated", true);
+        localStorage.setItem("user", JSON.stringify(data));
+        window.location.href = "http://localhost:3000";
+      } else {
+        localStorage.setItem("authenticated", false);
+        alert("Đăng nhập không thành công!");
+      }
+    });
   };
   return (
     <div
       style={{
-        display: 'flex',
+        display: "flex",
         background: 'url("assets/img/login.jpg")',
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -66,15 +66,21 @@ function Login() {
             onChange={(e) => setpass(e.target.value)}
           />
 
-          <button type="submit">Đăng nhập</button>
+          <button className="button_login" type="submit">
+            Đăng nhập
+          </button>
           <label>
             <input type="checkbox" checked="checked" name="remember" /> Remember
             me
           </label>
         </div>
         <div className="login_mxh">
-          <button className="fb" type="button">Facebook</button>
-          <button className="gg" type="button">Google</button>
+          <button className="fb button_login" type="button">
+            Facebook
+          </button>
+          <button className="gg button_login" type="button">
+            Google
+          </button>
         </div>
         <div className="container">
           <span className="psw">

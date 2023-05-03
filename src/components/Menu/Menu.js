@@ -14,7 +14,7 @@ function Menu(props) {
       .catch((error) => {
         console.error("Error fetching categories: ", error);
       });
-  }, []); 
+  }, []);
 
   const handleInputChange = (event) => {
     setKeyword(event.target.value);
@@ -64,7 +64,7 @@ function Menu(props) {
           </div>
         </div>
       </div>
-      <div className="mainmenu-area">
+      {/* <div className="mainmenu-area">
         <div className="container">
           <div className="row">
             <div className="navbar-header">
@@ -108,7 +108,7 @@ function Menu(props) {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
