@@ -4,6 +4,7 @@ import Banner from "../components/Banner/Banner";
 import Footer from "../components/footer/Footer";
 import Menu from "../components/Menu/Menu";
 import AllProduct from "../components/allProduct/allProduct";
+import Category from "../components/category/category";
 
 function HomePage() {
   const [searchKeyword, setSearchKeyword] = useState("");
@@ -19,6 +20,7 @@ function HomePage() {
       <Header />
       <Menu onSearch={handleSearch} />
       {isSearching ? null : <Banner />}
+      <Category />
       <AllProduct searchKeyword={searchKeyword} />
       <Footer />
     </div>

@@ -24,7 +24,7 @@ function AllProduct({ searchKeyword, product }) {
       <div className="container">
         <div className="row">
           {filteredProducts.map((product) => (
-            <div className="col-md-3 col-sm-6" key={product.pID}>
+            <div className="col-md-3 col-sm-6" key={product.pid}>
               <div className="single-shop-product">
                 <div className="product-upper">
                   <img src={product.image} alt="" />
@@ -39,7 +39,7 @@ function AllProduct({ searchKeyword, product }) {
                 <div className="product-option-shop">
                   <a
                     className="add_to_cart_button"
-                    href={"/detail?id=" + product.pID}
+                    href={"/detail?id=" + product.pid}
                   >
                     Xem
                   </a>
