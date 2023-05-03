@@ -1,10 +1,12 @@
 import React from "react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { accountService } from "../../service/account.service";
 function Login() {
   //login
   const [user, setuser] = useState("");
+  const navigate = useNavigate();
   const [pass, setpass] = useState("");
   const [authenticated, setauthenticated] = useState(
     localStorage.getItem(localStorage.getItem("authenticated") || false)
@@ -12,6 +14,30 @@ function Login() {
   const [error, setError] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
+<<<<<<< HEAD
+    accountService.login(user, pass)
+      .then(data => {
+
+        if (data.role.rID === 1) {
+          setauthenticated(true)
+          localStorage.setItem("authenticated", true);
+          localStorage.setItem("user", JSON.stringify(data));
+          alert("Đăng nhập admin thành công!")
+          navigate("/manager");
+        } else {
+          setauthenticated(false)
+          localStorage.setItem("authenticated", false);
+          alert("Đăng nhập  thành công!")
+          navigate("/");
+        }
+      })
+      .catch(error => {
+        setauthenticated(false)
+        localStorage.setItem("authenticated", false);
+        alert("Đăng nhập không thành công!")
+        console.log(error);
+      });
+=======
     accountService.login(user, pass).then((data) => {
       if (data) {
         setauthenticated(true);
@@ -23,7 +49,9 @@ function Login() {
         alert("Đăng nhập không thành công!");
       }
     });
+>>>>>>> 838d37ad9be36b1ef3daed00475d2de65c8fadde
   };
+  
   return (
     <div
       style={{

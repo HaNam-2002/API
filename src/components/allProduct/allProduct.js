@@ -9,6 +9,10 @@ function AllProduct({ searchKeyword, categoryId }) {
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);
+<<<<<<< HEAD
+=======
+        setFilteredProducts(data);
+>>>>>>> b4c8915af5925ef536e1616c49658be8cc760807
       })
       .catch((error) => console.error(error));
   }, []);
