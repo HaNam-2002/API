@@ -8,13 +8,10 @@ function Login() {
   const [user, setuser] = useState("");
   const navigate = useNavigate();
   const [pass, setpass] = useState("");
-  const [authenticated, setauthenticated] = useState(
-    localStorage.getItem(localStorage.getItem("authenticated") || false)
-  );
+  const [authenticated, setauthenticated] = useState(localStorage.getItem(localStorage.getItem("authenticated") || false));
   const [error, setError] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
-<<<<<<< HEAD
     accountService.login(user, pass)
       .then(data => {
 
@@ -25,8 +22,8 @@ function Login() {
           alert("Đăng nhập admin thành công!")
           navigate("/manager");
         } else {
-          setauthenticated(false)
-          localStorage.setItem("authenticated", false);
+          setauthenticated(true)
+          localStorage.setItem("authenticated", true);
           alert("Đăng nhập  thành công!")
           navigate("/");
         }
@@ -37,25 +34,12 @@ function Login() {
         alert("Đăng nhập không thành công!")
         console.log(error);
       });
-=======
-    accountService.login(user, pass).then((data) => {
-      if (data) {
-        setauthenticated(true);
-        localStorage.setItem("authenticated", true);
-        localStorage.setItem("user", JSON.stringify(data));
-        window.location.href = "http://localhost:3000";
-      } else {
-        localStorage.setItem("authenticated", false);
-        alert("Đăng nhập không thành công!");
-      }
-    });
->>>>>>> 838d37ad9be36b1ef3daed00475d2de65c8fadde
   };
   
   return (
     <div
       style={{
-        display: "flex",
+        display: 'flex',
         background: 'url("assets/img/login.jpg")',
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -94,21 +78,15 @@ function Login() {
             onChange={(e) => setpass(e.target.value)}
           />
 
-          <button className="button_login" type="submit">
-            Đăng nhập
-          </button>
+          <button type="submit">Đăng nhập</button>
           <label>
             <input type="checkbox" checked="checked" name="remember" /> Remember
             me
           </label>
         </div>
         <div className="login_mxh">
-          <button className="fb button_login" type="button">
-            Facebook
-          </button>
-          <button className="gg button_login" type="button">
-            Google
-          </button>
+          <button className="fb" type="button">Facebook</button>
+          <button className="gg" type="button">Google</button>
         </div>
         <div className="container">
           <span className="psw">
