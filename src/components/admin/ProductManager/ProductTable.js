@@ -107,11 +107,14 @@ function ProductTable({ categories }) {
               <td>{p.description}</td>
               <td>{p.price}</td>
               <td>
-                <button className="w3-red" onClick={() => deleteOne(p.pid)}>
+                <button
+                  className="w3-red button_admin"
+                  onClick={() => deleteOne(p.pid)}
+                >
                   Xoá
                 </button>
                 <button
-                  className="w3-green"
+                  className="w3-green button_admin"
                   onClick={() => {
                     findProductUpdate(p.pid);
                     document.getElementById("id02").style.display = "block";
@@ -249,7 +252,7 @@ function ProductTable({ categories }) {
                 </select>
               </p>
               <p className="w3-center">
-                <button className="button w3-blue" type="submit">
+                <button className="button w3-blue button_admin" type="submit">
                   Sửa sản phẩm
                 </button>
               </p>

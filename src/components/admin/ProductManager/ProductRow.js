@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./ProductManager.css";
-function ProductRow({product, categories, onDeleteProduct,products}) { 
+function ProductRow({ product, categories, onDeleteProduct, products }) {
   const [imageUrl, setImageUrl] = useState(null);
   const [pid, setPId] = useState(product.pid);
   const handleImageChange = (event) => {
@@ -15,15 +15,15 @@ function ProductRow({product, categories, onDeleteProduct,products}) {
     console.log(pid);
     // console.log(data)
     // data.append("imgUrl", image); // Thêm Image URL vào FormData
-    fetch(`http://localhost:8083/products/update/${pid}/${data.get('cID')}`, {
+    fetch(`http://localhost:8083/products/update/${pid}/${data.get("cID")}`, {
       method: "PUT",
       body: JSON.stringify(Object.fromEntries(data)),
       headers: {
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     })
-      .then(response => {
-        if (response.ok) {   
+      .then((response) => {
+        if (response.ok) {
           alert("Sửa sản phẩm thành công!");
           window.location.reload();
           form.reset();
@@ -32,11 +32,11 @@ function ProductRow({product, categories, onDeleteProduct,products}) {
           alert("Có lỗi xảy ra khi sửa sản phẩm.");
         }
       })
-      .catch(error => {
+      .catch((error) => {
         alert("Có lỗi xảy ra khi thêm sản phẩm.");
       });
   };
-  
+
   return (
     <>
       <tr>
@@ -50,9 +50,14 @@ function ProductRow({product, categories, onDeleteProduct,products}) {
         <td>{product.description}</td>
         <td>{product.price}</td>
         <td>
-          <button className="w3-red" onClick={() =>onDeleteProduct(product.pid)}>Xoá</button>
           <button
-            className="w3-green"
+            className="w3-red button_admin"
+            onClick={() => onDeleteProduct(product.pid)}
+          >
+            Xoá
+          </button>
+          <button
+            className="w3-green button_admin"
             onClick={() =>
               (document.getElementById("id02").style.display = "block")
             }
@@ -72,11 +77,10 @@ function ProductRow({product, categories, onDeleteProduct,products}) {
             >
               &times;
             </span>
-            <h2 className="title">SỬA SẢN PHẨM</h2>
+            <h2 className="title button_admin">SỬA SẢN PHẨM</h2>
           </header>
           <div className="w3-container w3-light-grey w3-padding">
             <form className="w3-container w3-card-4" onSubmit={handleSubmit}>
-
               {/* <input type="hidden" name="pid" value={product.pid} /> */}
               <p>
                 <label className="w3-text-blue">
@@ -164,10 +168,9 @@ function ProductRow({product, categories, onDeleteProduct,products}) {
                 </select>
               </p>
               <p className="w3-center">
-                <button className="button w3-blue" type="submit">
+                <button className="button w3-blue button_admin" type="submit">
                   Sửa sản phẩm
                 </button>
-                
               </p>
             </form>
           </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-function AllProduct({ searchKeyword, product }) {
+
+function AllProduct({ searchKeyword, categoryId }) {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
 
@@ -8,17 +9,22 @@ function AllProduct({ searchKeyword, product }) {
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);
-        console.log(products);
-        setFilteredProducts(data);
       })
       .catch((error) => console.error(error));
   }, []);
+
   useEffect(() => {
-    const filtered = products.filter((product) =>
-      product.name.toLowerCase().includes(searchKeyword.toLowerCase())
-    );
+    const filtered = products.filter((product) => {
+      // If categoryId is present and product's categoryId is different, exclude the product
+      if (categoryId && product.category.cid !== categoryId) {
+        return false;
+      } // Check searchKeyword
+      return product.name.toLowerCase().includes(searchKeyword.toLowerCase());
+    });
+
     setFilteredProducts(filtered);
-  }, [searchKeyword, products]);
+  }, [searchKeyword, categoryId, products]);
+
   return (
     <div className="single-product-area">
       <div className="zigzag-bottom"></div>
@@ -36,7 +42,6 @@ function AllProduct({ searchKeyword, product }) {
                 <div className="product-carousel-price">
                   <ins>{product.price}$</ins>
                 </div>
-
                 <div className="product-option-shop">
                   <a
                     className="add_to_cart_button"
@@ -49,7 +54,6 @@ function AllProduct({ searchKeyword, product }) {
             </div>
           ))}
         </div>
-
         <div className="row">
           <div className="col-md-12">
             <div className="product-pagination text-center">

@@ -78,13 +78,13 @@ function CategoryTable(category) {
             <td>{category.cname}</td>
             <td>
               <button
-                className="w3-red"
+                className="w3-red button_admin"
                 onClick={() => handleDeleteCategory(category.cid)}
               >
                 Xóa
               </button>
               <button
-                className="w3-green"
+                className="w3-green button_admin"
                 onClick={() => {
                   document.getElementById("id03").style.display = "block";
                   setSelectedIndex(index);
@@ -130,7 +130,7 @@ function CategoryTable(category) {
                 />
               </p>
               <p>
-                <button className="w3-btn w3-blue">XONG</button>
+                <button className="w3-btn w3-blue button_admin">XONG</button>
               </p>
             </form>
           </div>

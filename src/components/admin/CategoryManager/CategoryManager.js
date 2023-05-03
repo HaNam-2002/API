@@ -27,21 +27,20 @@ const CategoryManager = () => {
         "Content-Type": "application/json",
       },
     })
-    .then(response => {
-      if (response.ok) {   
-        alert("Thêm sản phẩm thành công!");
-        window.location.reload();
-        form.reset();
-     
-      } else {
-        alert("Có lỗi xảy ra khi sửa sản phẩm.");
-      }
-    })
-    .catch(error => {
-      console.error(error);
-      alert('Thêm mới thất bại');
-    });
-        setShowAddModal(false);
+      .then((response) => {
+        if (response.ok) {
+          alert("Thêm sản phẩm thành công!");
+          window.location.reload();
+          form.reset();
+        } else {
+          alert("Có lỗi xảy ra khi thêm danh mục.");
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+        alert("Thêm mới thất bại");
+      });
+    setShowAddModal(false);
   };
 
   return (
@@ -52,8 +51,7 @@ const CategoryManager = () => {
         Thêm danh mục
       </button>
       <div className="table_cate">
-        <CategoryTable categories={categories} 
-        />  
+        <CategoryTable categories={categories} />
       </div>
       <div
         id="addModal"
@@ -71,20 +69,18 @@ const CategoryManager = () => {
             <h2 className="title">THÊM DANH MỤC</h2>
           </header>
           <div className="w3-container w3-light-grey w3-padding">
-            <form className="w3-container w3-card-4" onSubmit={handleCategorySubmit}>
+            <form
+              className="w3-container w3-card-4"
+              onSubmit={handleCategorySubmit}
+            >
               <p>
                 <label className="w3-text-blue">
                   <b>Tên danh mục</b>
                 </label>
-                <input
-                  className="cname"
-                  name="cname"
-                  type="text"
-                  required
-                />
+                <input className="cname" name="cname" type="text" required />
               </p>
               <p>
-                <button type="submit" className="w3-btn w3-blue">
+                <button type="submit" className="w3-btn w3-blue button_admin">
                   XONG
                 </button>
               </p>

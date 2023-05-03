@@ -32,7 +32,7 @@ function Menu(props) {
             <div className="col-sm-6" style={{ width: "30%" }}>
               <div className="logo">
                 <h1>
-                  <a href="/home">
+                  <a href="/">
                     <img
                       className="logo_img"
                       src="assets/img/logo.png"
@@ -44,7 +44,7 @@ function Menu(props) {
             </div>{" "}
             <div className="col-sm-6" style={{ width: "70%" }}>
               <div className="shopping-item">
-                <a href="cart.html">
+                <a href="/cart">
                   Cart - <span className="cart-amunt">$100</span>
                   <i className="fa fa-shopping-cart"></i>
                   <span className="product-count">5</span>

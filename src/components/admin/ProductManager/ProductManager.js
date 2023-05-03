@@ -26,15 +26,15 @@ function ProductManager() {
     const form = event.target;
     const data = new FormData(form);
     data.append("imgUrl", image); // Thêm Image URL vào FormData
-    fetch(`http://localhost:8083/products/add?cID=${data.get('cID')}`, {
+    fetch(`http://localhost:8083/products/add?cID=${data.get("cID")}`, {
       method: "POST",
       body: JSON.stringify(Object.fromEntries(data)),
       headers: {
-        "Content-Type": "application/json"
-      }
+        "Content-Type": "application/json",
+      },
     })
-      .then(response => {
-        if (response.ok) {   
+      .then((response) => {
+        if (response.ok) {
           alert("Sản phẩm đã được thêm thành công!");
           window.location.reload();
           form.reset();
@@ -43,7 +43,7 @@ function ProductManager() {
           alert("Có lỗi xảy ra khi thêm sản phẩm.");
         }
       })
-      .catch(error => {
+      .catch((error) => {
         alert("Có lỗi xảy ra khi thêm sản phẩm.");
       });
   };
@@ -52,7 +52,7 @@ function ProductManager() {
       <div className="w3-container"></div>
       <h1 className="title">QUẢN LÍ SẢN PHẨM</h1>
       <button
-        className="button w3-blue"
+        className="button w3-blue button_admin"
         onClick={() =>
           (document.getElementById("id01").style.display = "block")
         }
@@ -101,12 +101,7 @@ function ProductManager() {
                 <label className="w3-text-blue">
                   <b>Name</b>
                 </label>
-                <input
-                  className="w3-input"
-                  type="text"
-                  name="name"
-                  required
-                />
+                <input className="w3-input" type="text" name="name" required />
               </p>
               <p>
                 <label className="w3-text-blue">
@@ -134,12 +129,7 @@ function ProductManager() {
                 <label className="w3-text-blue">
                   <b>Title</b>
                 </label>
-                <input
-                  className="w3-input"
-                  type="text"
-                  name="title"
-                  required
-                />
+                <input className="w3-input" type="text" name="title" required />
               </p>
               <p>
                 <label className="w3-text-blue">
@@ -157,7 +147,7 @@ function ProductManager() {
                 </select>
               </p>
               <p className="w3-center">
-                <button className="button w3-blue" type="submit">
+                <button className="button w3-blue button_admin" type="submit">
                   Thêm sản phẩm
                 </button>
               </p>
@@ -169,4 +159,4 @@ function ProductManager() {
   );
 }
 
-export default ProductManager;  
+export default ProductManager;

@@ -8,22 +8,31 @@ import Category from "../components/category/category";
 
 function HomePage() {
   const [searchKeyword, setSearchKeyword] = useState("");
-  const [isSearching, setIsSearching] = useState(false);
+  const [selectedCategoryId, setSelectedCategoryId] = useState(null);
+
+  const handleCategoryClick = (categoryId) => {
+    setSelectedCategoryId(categoryId);
+    setSearchKeyword("");
+  };
 
   const handleSearch = (keyword) => {
     setSearchKeyword(keyword);
-    setIsSearching(true);
+    setSelectedCategoryId(null);
   };
 
   return (
     <div style={{ position: "relative" }}>
       <Header />
       <Menu onSearch={handleSearch} />
-      {isSearching ? null : <Banner />}
-      <Category />
-      <AllProduct searchKeyword={searchKeyword} />
+      {!searchKeyword && !selectedCategoryId && <Banner />}
+      <Category onCategoryClick={handleCategoryClick} />
+      <AllProduct
+        searchKeyword={searchKeyword}
+        categoryId={selectedCategoryId}
+      />
       <Footer />
     </div>
   );
 }
+
 export default HomePage;

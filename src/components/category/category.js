@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "./category.css";
+
 function Category({ onCategoryClick }) {
   const [categories, setCategories] = useState([]);
   const [filteredCategories, setFilteredCategories] = useState([]);
@@ -14,6 +15,7 @@ function Category({ onCategoryClick }) {
       })
       .catch((error) => console.error(error));
   }, []);
+
   const handleCategoryClick = (categoryId) => {
     onCategoryClick(categoryId);
   };
@@ -24,13 +26,13 @@ function Category({ onCategoryClick }) {
         <div className="row">
           <div className="navbar-collapse collapse">
             <ul className="nav navbar-nav">
-              {filteredCategories.map((category) => (
-                <li key={category.cid}>
+              {filteredCategories.map(({ cid, cname }) => (
+                <li key={cid}>
                   <button
                     className="cate_item"
-                    onClick={() => handleCategoryClick(category.cid)}
+                    onClick={() => handleCategoryClick(cid)}
                   >
-                    {category.cname}
+                    {cname}
                   </button>
                 </li>
               ))}
