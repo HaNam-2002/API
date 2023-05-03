@@ -24,13 +24,8 @@ function Header() {
                   </a>
                 </li>
                 <li>
-                  <a href="cart.html">
-                    <i className="fa fa-user"></i> My Cart
-                  </a>
-                </li>
-                <li>
-                  <a href="checkout.html">
-                    <i className="fa fa-user"></i> Checkout
+                  <a href="/">
+                    <i className="fa fa-user"></i> Thông tin cá nhân
                   </a>
                 </li>
                 <li>
@@ -44,11 +39,7 @@ function Header() {
                     </a>
                   )}
                 </li>
-                <li>
-                  <a href="manager">
-                    <i className="fa fa-user"></i> Quản lý shop
-                  </a>
-                </li>
+                
               </ul>
             </div>
           </div>

@@ -8,7 +8,6 @@ function AllProduct({ searchKeyword, product }) {
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);
-        console.log(products);
         setFilteredProducts(data);
       })
       .catch((error) => console.error(error));
