@@ -1,0 +1,189 @@
+.v2-profile-user .v2-content .v2-content__user {
+  background: #fff;
+  box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  padding: 30px 0;
+  width: 800px;
+}
+.v2-profile-user .v2-content {
+  width: calc((100% - 20px) * 3 / 4);
+}
+.v2-profile-user .v2-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+.container_psn {
+  margin: 0 auto;
+}
+.clearfix {
+  clear: both;
+}
+.v2-profile-user {
+  clear: both;
+}
+/* @media only screen and (min-width:1200px) */
+.container {
+  width: 1170px !important;
+}
+.container {
+  position: relative;
+}
+.mp-level,
+.mp-pusher {
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.mp-pusher {
+  position: relative;
+  left: 0px;
+  height: 100%;
+  z-index: 9999;
+  margin-top: 110px;
+}
+.mp-pusher {
+  position: relative;
+  left: 0px;
+  height: 100%;
+  z-index: 9999;
+}
+.mp-level,
+.mp-pusher {
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.mp-level::after,
+.mp-level::before,
+.mp-pusher::after {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 0px;
+  height: 0px;
+  content: "";
+  opacity: 0;
+}
+.mp-level::after,
+.mp-pusher::after {
+  background: rgba(0, 0, 0, 0.3);
+  -webkit-transition: opacity 0.3s, width 0.1s 0.3s, height 0.1s 0.3s;
+  -moz-transition: opacity 0.3s, width 0.1s 0.3s, height 0.1s 0.3s;
+  transition: opacity 0.3s, width 0.1s 0.3s, height 0.1s 0.3s;
+}
+.body {
+  font-size: 14px;
+  font-family: Arial;
+  width: 100%;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: 0;
+}
+.body {
+  position: relative;
+}
+.v2-profile-user .v2-content .title {
+  padding: 0 35px;
+  position: relative;
+  height: 30px;
+  line-height: 30px;
+}
+.v2-profile-user .v2-content form {
+  margin-top: 30px;
+  padding: 0 35px;
+}
+.v2-profile-user .v2-content form .form-group {
+  display: flex;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.v2-profile-user .v2-content form .form-group label {
+  width: 20%;
+  display: block;
+}
+.v2-profile-user .v2-content form .form-group button {
+  background: linear-gradient(180deg, #fa9d4d 0, #f87f41 100%);
+  border-radius: 5px;
+  width: 230px;
+  height: 40px;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+  text-transform: uppercase;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+.v2-profile-user .v2-content form .form-group a {
+  font-size: 14px;
+  line-height: 16px;
+  text-decoration-line: underline;
+  color: #03aef0;
+}
+.v2-profile-user .v2-content form .form-group .v2-birth-day {
+  display: flex;
+  flex-wrap: wrap;
+  width: 50%;
+}
+.v2-profile-user .v2-content form .form-group .v2-birth-day .select {
+  position: relative;
+  display: flex;
+  width: calc((100% - 20px) / 3);
+  height: 35px;
+  overflow: hidden;
+  margin-right: 10px;
+}
+.v2-profile-user .v2-content form .form-group .v2-birth-day .select::after {
+  content: "\25BC";
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: 0.25s all ease;
+  -o-transition: 0.25s all ease;
+  transition: 0.25s all ease;
+}
+.v2-profile-user .v2-content form .form-group .v2-birth-day :last-child.select {
+  margin-right: 0px;
+}
+.v2-profile-user .v2-content form .form-group .v2-birth-day .select select {
+  width: 100%;
+  height: 35px;
+  border: 1px solid #3e3e3e;
+  padding-left: 10px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+}
+.v2-profile-user .v2-content form .form-group input {
+  width: 50%;
+  height: 35px;
+  background: #fff;
+  box-sizing: border-box;
+  border-radius: 5px;
+  padding-left: 15px;
+  border: 1px solid #3e3e3e;
+}
+.v2-profile-user .v2-content form .form-group [type="radio"] {
+  width: auto;
+}
+.v2-profile-user .v2-content form .form-group span {
+  margin: 0 20px 0 10px;
+}
+.v2-profile-user .v2-content .title p {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 23px;
+  color: #c69a39;
+}

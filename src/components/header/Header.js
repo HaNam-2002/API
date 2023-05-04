@@ -24,7 +24,7 @@ function Header() {
                   </a>
                 </li>
                 <li>
-                  <a href="/">
+                  <a href="personal">
                     <i className="fa fa-user"></i> Thông tin cá nhân
                   </a>
                 </li>

@@ -12,6 +12,7 @@ import ProductManagerPage from "./pages/AdminPages/ProductManagerPage";
 import CartManagerPage from "./pages/AdminPages/CartManagerPage";
 import CategoryManagerPage from "./pages/AdminPages/CategoryManagerPage";
 import CartPage from "./pages/Cartpage";
+import PersonalPage from "./pages/personalPage";
 
 function App() {
   return (
@@ -49,6 +50,9 @@ function App() {
         </Routes>
         <Routes>
           <Route path="/contact" element={<ContactPage />} />
+        </Routes>
+        <Routes>
+          <Route path="/personal" element={<PersonalPage />} />
         </Routes>
       </Router>
     </div>
