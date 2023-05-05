@@ -1,68 +1,98 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 
-function CartItem({ index }) {
-  const [item, setItem] = useState({
-    number: 0,
-    color: "",
-  });
+function CartItem() {
+  const [product, setProduct] = useState({});
+  const location = useLocation();
 
-  const handleIncrease = () => {
-    setItem((prevItem) => ({ ...prevItem, number: prevItem.number + 1 }));
-  };
-
-  const handleDecrease = () => {
-    if (item.number > 0) {
-      setItem((prevItem) => ({ ...prevItem, number: prevItem.number - 1 }));
+  useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const pID = queryParams.get("id");
+    if (pID) {
+      fetch(`http://localhost:8083/products/${pID}`)
+        .then((response) => response.json())
+        .then((data) => setProduct(data));
     }
-  };
-
-  const handleChangeColor = (event) => {
-    setItem((prevItem) => ({ ...prevItem, color: event.target.value }));
-  };
+  }, [location.search]);
 
   return (
-    <li className="product-item">
-      <div className="imgsp">
-        <a href="#">
-          <img
-            src="https://cdn.tgdd.vn/Products/Images/42/247508/iphone-14-pro-vang-thumb-600x600.jpg"
-            alt="Lỗi"
-          />
-          <div className="imgsp-btn">
-            <button className="btn-delete" type="button">
-              Xoá
-            </button>
+    <div className="cart-body">
+      <div className="cart-product-list">
+        <div className="cart-product-item">
+          <div className="cart-info">
+            <div className="cart-product-image">
+              <a
+                className="product-title"
+                href="https://mobilecity.vn/dien-thoai/xiaomi-redmi-note-12.html"
+              >
+                <div className="image-product lazy">
+                  <img
+                    src="https://cdn.mobilecity.vn/mobilecity-vn/images/2022/10/w80/xiaomi-redmi-note-12-xanh.png.webp"
+                    alt=""
+                  />
+                </div>
+              </a>
+            </div>
+            <div className="cart-product-info">
+              <div className="cart-product-detail">
+                <div className="cart-product-title">
+                  <a
+                    className="product-title"
+                    href="https://mobilecity.vn/dien-thoai/xiaomi-redmi-note-12.html"
+                  >
+                    {product.name}
+                  </a>
+                </div>
+                <div className="cart-product-variant">
+                  <a
+                    className="btn-choose-variant"
+                    href="#"
+                    data-id="86442"
+                    data-product_type="phone_variants"
+                    data-deal_id="0"
+                    data-cart="86442"
+                    data-location="3"
+                    data-service_product_id="2"
+                    data-variant_id="11239"
+                    data-phone_id="1495"
+                    data-target="#popup-variant"
+                    data-toggle="popup"
+                  >
+                    <div className="product-choose-button">
+                      Chọn biến thể
+                      <div className="arrow-choose-variant"></div>
+                    </div>
+                    <div className="product-variant">
+                      <div className="product-current-variant">
+                        6-128GB Trắng
+                      </div>
+                      <div className="product-warranty">BHV 12 Tháng</div>
+                    </div>
+                    <div className="arrow-choose-variant"></div>
+                  </a>
+                </div>
+              </div>
+              <div className="cart-product-price">
+                <span className="cart-old-price">4.950.000 ₫</span>
+                <span className="cart-price">4.600.000 ₫</span>
+              </div>
+              <div className="cart-product-quantity">
+                <span className="quantity-product">1</span>
+              </div>
+              <div className="cart-real-price">
+                <span className="real-price">4.600.000 ₫</span>
+              </div>
+            </div>
           </div>
-        </a>
-      </div>
-      <div className="infosp">
-        <div className="infosp-name">
-          <h3>IPHONE 13 PROMAX</h3>
-        </div>
-        <div className="infosp-color">
-          <select value={item.color} onChange={handleChangeColor}>
-            <option value="">-- Chọn màu --</option>
-            <option value="red">Đỏ</option>
-            <option value="blue">Xanh</option>
-            <option value="green">Lục</option>
-          </select>
-        </div>
-      </div>
-      <div className="infosp-price">
-        <h4 className="infosp-price-text">25.000.000đ</h4>
-        <div className="choose-number">
-          <div className="number-buttons">
-            <button onClick={handleDecrease} type="button">
-              -
-            </button>
-            <input type="text" value={item.number} readOnly />
-            <button onClick={handleIncrease} type="button">
-              +
-            </button>
+          <div className="cart-action">
+            <a className="cart delete" href="javascript:;" data-id="86442">
+              Xóa
+            </a>
           </div>
         </div>
       </div>
-    </li>
+    </div>
   );
 }
+
 export default CartItem;
