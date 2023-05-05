@@ -46,11 +46,7 @@ function ProductContent(props) {
                 <div className="quantity">
                   <input
                     type="number"
-                    size="4"
                     className="input-text qty text"
-                    title="Qty"
-                    value="1"
-                    name="quantity"
                     min="1"
                     step="1"
                   />
