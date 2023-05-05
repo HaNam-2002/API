@@ -1,45 +1,41 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./Login.css";
 import { accountService } from "../../service/account.service";
+
 function Login() {
-  //login
   const [user, setuser] = useState("");
-  const navigate = useNavigate();
   const [pass, setpass] = useState("");
-  const [authenticated, setauthenticated] = useState(localStorage.getItem(localStorage.getItem("authenticated") || false));
-  const [error, setError] = useState("");
+  const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    accountService.login(user, pass)
-      .then(data => {
-
+    accountService
+      .login(user, pass)
+      .then((data) => {
         if (data.role.rID === 1) {
-          setauthenticated(true)
-          localStorage.setItem("authenticated", true);
           localStorage.setItem("user", JSON.stringify(data));
-          alert("Đăng nhập admin thành công!")
+          localStorage.setItem("authenticated", true);
+          alert("Đăng nhập admin thành công!");
           navigate("/manager");
         } else {
-          setauthenticated(true)
+          localStorage.setItem("user", JSON.stringify(data));
           localStorage.setItem("authenticated", true);
-          alert("Đăng nhập  thành công!")
+          alert("Đăng nhập thành công!");
           navigate("/");
         }
       })
-      .catch(error => {
-        setauthenticated(false)
+      .catch((error) => {
         localStorage.setItem("authenticated", false);
-        alert("Đăng nhập không thành công!")
+        alert("Đăng nhập không thành công!");
         console.log(error);
       });
   };
-  
+
   return (
     <div
       style={{
-        display: 'flex',
+        display: "flex",
         background: 'url("assets/img/login.jpg")',
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
@@ -53,7 +49,7 @@ function Login() {
         </div>
 
         <div className="container">
-          <label for="user">
+          <label htmlFor="user">
             <b>Tên đăng nhập</b>
           </label>
           <input
@@ -66,7 +62,7 @@ function Login() {
             onChange={(e) => setuser(e.target.value)}
           />
 
-          <label for="pass">
+          <label htmlFor="pass">
             <b>Mật khẩu</b>
           </label>
           <input
@@ -85,8 +81,12 @@ function Login() {
           </label>
         </div>
         <div className="login_mxh">
-          <button className="fb" type="button">Facebook</button>
-          <button className="gg" type="button">Google</button>
+          <button className="fb" type="button">
+            Facebook
+          </button>
+          <button className="gg" type="button">
+            Google
+          </button>
         </div>
         <div className="container">
           <span className="psw">
