@@ -3,7 +3,6 @@ import "./personal.css";
 
 function Personal() {
   const user = JSON.parse(localStorage.getItem("user"));
-
   return (
     <div className="body">
       <div class="mp-pusher" id="mp-pusher">
@@ -29,17 +28,17 @@ function Personal() {
                         class="name"
                         type="text"
                         placeholder="Họ và tên..."
-                        value={user?.user || ""}
+                        value={user?.name || ""}
                       />
                     </div>
                     <div class="form-group">
                       <label>Email</label>
                       <input
-                        name="email"
-                        class="email"
+                        name="gmail"
+                        class="gmail"
                         type="text"
-                        placeholder="Email..."
-                        value={user?.email || ""}
+                        placeholder="Gmail..."
+                        value={user?.gmail || ""}
                       />
                     </div>
                     <div class="form-group">
