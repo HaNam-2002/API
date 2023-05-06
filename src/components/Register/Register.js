@@ -6,8 +6,11 @@ function Register() {
     user: '',
     pass: '',
     confirmPassword: '',
+    name:'',
     phone: '',
+    gmail:'',
     address: '',
+
   });
 
   const [errorMessage, setErrorMessage] = useState(null);
@@ -72,6 +75,39 @@ function Register() {
             onChange={handleChange}
             required
           />
+          <label htmlFor="name">
+            <b>Name</b>
+          </label>
+          <input
+            type="text"
+            placeholder="Nhập tên"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
+          <label htmlFor="address">
+            <b>Địa chỉ</b>
+          </label>
+          <input
+            type="text"
+            placeholder="Nhập địa chỉ"
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
+            required
+          />
+          <label htmlFor="gmail">
+            <b>Gmail</b>
+          </label>
+          <input
+            type="text"
+            placeholder="Nhập gmail"
+            name="gmail"
+            value={formData.gmail}
+            onChange={handleChange}
+            required
+          />
           <label htmlFor="phone">
             <b>Số điện thoại</b>
           </label>
@@ -112,17 +148,7 @@ function Register() {
               />
             </div>
           </div>
-          <label htmlFor="address">
-            <b>Địa chỉ</b>
-          </label>
-          <input
-            type="text"
-            placeholder="Nhập địa chỉ"
-            name="address"
-            value={formData.address}
-            onChange={handleChange}
-            required
-          />
+          
           <div className="clearfix">
             <button
               type="submit"
