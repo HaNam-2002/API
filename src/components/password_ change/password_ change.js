@@ -16,7 +16,7 @@ function PasswordChange() {
     }
     axios
       .put(
-        "http://localhost:8083/accounts/changePassword/" + JSON.parse(window.localStorage.getItem('user')).uID,
+        "http://localhost:8083/accounts/changePassword/" + JSON.parse(window.localStorage.getItem('user')).uid,
         {
           oldPassword,
           newPassword,
@@ -25,6 +25,7 @@ function PasswordChange() {
       .then((response) => {
         console.log(response);
         alert("Đổi mật khẩu thành công!");
+        window.location.href = 'http://localhost:3000/'
       })
       .catch((error) => {
         console.log(error);
