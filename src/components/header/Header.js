@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Header() {
-  const isLogin = localStorage.getItem("authenticated");
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    localStorage.getItem("authenticated") || false
+  );
 
   function logout() {
     localStorage.clear();
+    setIsAuthenticated(false);
   }
+
   return (
     <div className="header-area">
       <div className="container">
@@ -23,13 +27,15 @@ function Header() {
                     <i className="fa fa-heart"></i> Yêu thích
                   </a>
                 </li>
+                {isAuthenticated && (
+                  <li>
+                    <a href="personal">
+                      <i className="fa fa-user"></i> Thông tin cá nhân
+                    </a>
+                  </li>
+                )}
                 <li>
-                  <a href="/">
-                    <i className="fa fa-user"></i> Thông tin cá nhân
-                  </a>
-                </li>
-                <li>
-                  {isLogin ? (
+                  {isAuthenticated ? (
                     <a href="/" onClick={logout}>
                       Logout
                     </a>

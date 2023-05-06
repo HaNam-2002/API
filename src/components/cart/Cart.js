@@ -3,33 +3,46 @@ import CartItem from "./CartItem";
 import "./Cart.css";
 function Cart() {
   return (
-    <>
-      <div className="w3-modal-content w3-card-4">
-        <div className="top-content">
-          <a href="/" className="far fa-arrow-alt-circle-left">
-            {"   "}Mua thêm sản phẩm khác
-          </a>
-        </div>
-        <form className="w3-container w3-card-4" action="">
-          <ul className="listing-cart">
-            <CartItem index={0} />
-            <CartItem index={1} />
-          </ul>
-
-          <div className="tong_Tien">
-            <h5 className="tong_Tien_text">Tạm tính:</h5>
-            <h5 className="tong_Tien_price">25.000.000Đ</h5>
-          </div>
-          <div className="line"></div>
-          <label className="w3-text-blue">
-            <h4>Thông tin khách hàng</h4>
-          </label>
-          <p>
-            <button className="w3-btn w3-blue">XONG</button>
+    <div class="mp-pusher" id="mp-pusher">
+      <section class="container clearfix">
+        <section class="cart-area">
+          <p class="branch-name">
+            <a class="cart-location-name" href="/">
+              Trở về
+            </a>
           </p>
-        </form>
-      </div>
-    </>
+          <div class="cart">
+            <div class="cart-product">
+              <div class="cart-header">
+                <div class="cart-title">Sản phẩm</div>
+                <div class="cart-price-title">Đơn giá</div>
+                <div class="cart-quantity-title">Số lượng</div>
+                <div class="cart-sum-price-title">Thành tiền</div>
+                <div class="cart-action-title">Thao tác</div>
+              </div>
+              <CartItem />
+            </div>
+            <div class="cart-footer">
+              <div class="cart-bottom">
+                <div class="text">
+                  Tổng tiền hàng ( 1 sản phẩm ):
+                  <span class="money total_price">4.600.000 ₫</span>
+                </div>
+                <div class="select-voucher">
+                  <a
+                    class="v2-btn"
+                    id="v2-checkout"
+                    href="https://mobilecity.vn/thanh-toan?location_id=3"
+                  >
+                    Tiếp tục
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+    </div>
   );
 }
 

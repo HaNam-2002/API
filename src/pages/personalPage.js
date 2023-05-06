@@ -1,14 +1,16 @@
 import React from "react";
-import ChangePass from "../components/password_ change/password_ change";
 import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
-function ChangePassPage() {
+import Personal from "../components/personal/personal";
+
+function PersonalPage() {
   return (
     <div style={{ position: "relative" }}>
       <Header />
-      <ChangePass />
+      <Personal />
       <Footer />
     </div>
   );
 }
-export default ChangePassPage;
+
+export default PersonalPage;
