@@ -50,7 +50,7 @@ function CategoryManager() {
   };
 
   return (
-    <div style={{ marginLeft: "70px" }}>
+    <div style={{ marginLeft: "90px" }}>
       <div className="w3-container"></div>
       <h1 className="title">QUẢN LÝ DANH MỤC</h1>
       <button
@@ -96,7 +96,7 @@ function CategoryManager() {
                     src={image}
                     alt="Selected image"
                     style={{
-                      maxWidth: "150px"
+                      maxWidth: "150px",
                     }}
                   />
                 </p>
@@ -126,4 +126,3 @@ function CategoryManager() {
 }
 
 export default CategoryManager;
-
