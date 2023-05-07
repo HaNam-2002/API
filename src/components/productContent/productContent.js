@@ -16,7 +16,7 @@ function ProductContent(props) {
   });
   return (
     <div className="body">
-      <div className="mp-pusher" id="mp-pusher">
+      <div className="mp-pusher" id="mp-pusher" style={{ marginTop: "30px" }}>
         <section className="container">
           <div className="product-content-box">
             <div className="product-image-store-list">
