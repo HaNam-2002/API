@@ -1,0 +1,580 @@
+.product-content-box {
+  float: left;
+  width: 100%;
+  margin: 10px 0;
+  position: relative;
+}
+.container {
+  margin: 0 auto;
+}
+/* @media only screen and (min-width:1200px) */
+.container {
+  width: 1170px !important;
+}
+.container {
+  position: relative;
+}
+.mp-level,
+.mp-pusher {
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.mp-pusher {
+  position: relative;
+  left: 0px;
+  height: 100%;
+  z-index: 9999;
+  margin-top: 110px;
+}
+.mp-pusher {
+  position: relative;
+  left: 0px;
+  height: 100%;
+  z-index: 9999;
+}
+.mp-level,
+.mp-pusher {
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+.mp-level::after,
+.mp-level::before,
+.mp-pusher::after {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 0px;
+  height: 0px;
+  content: "";
+  opacity: 0;
+}
+.mp-level::after,
+.mp-pusher::after {
+  background: rgba(0, 0, 0, 0.3);
+  -webkit-transition: opacity 0.3s, width 0.1s 0.3s, height 0.1s 0.3s;
+  -moz-transition: opacity 0.3s, width 0.1s 0.3s, height 0.1s 0.3s;
+  transition: opacity 0.3s, width 0.1s 0.3s, height 0.1s 0.3s;
+}
+body {
+  font-size: 14px;
+  font-family: Arial;
+  width: 100%;
+  overflow-x: hidden;
+}
+body {
+  position: relative;
+}
+.product-content-box .product-image-store-list {
+  width: 30%;
+  float: left;
+}
+.product-price-box {
+  float: left;
+  width: 45%;
+}
+.product-price-box {
+  padding: 0 20px;
+}
+.accessories-related-box,
+.product-related-box {
+  float: left;
+  width: 25%;
+}
+.product-related-box {
+  padding-left: 10px;
+  float: left;
+  margin-bottom: 5px;
+  overflow-y: hidden;
+  position: relative;
+}
+.product-related-box,
+.related-box {
+  padding-left: 10px;
+  margin-bottom: 5px;
+  overflow-y: hidden;
+  position: relative;
+  float: left;
+  width: 25%;
+}
+.product-related-box .product-related-title {
+  padding: 0 5px;
+  line-height: 32px;
+  text-transform: capitalize;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  background: #c69a39;
+}
+.product-related-box .product-related-title {
+  padding: 0 5px;
+  line-height: 32px;
+  text-transform: capitalize;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  background: #c69a39;
+}
+.product-related-box .product-related-list {
+  overflow-y: auto;
+  float: left;
+  height: calc(100% - 32px);
+  background-color: #f6f6f6;
+  width: 100%;
+  padding-bottom: 5px;
+  position: relative;
+}
+.product-related-box .product-related-list {
+  overflow-y: auto;
+  float: left;
+  height: calc(100% - 32px);
+  background-color: #f6f6f6;
+  width: 100%;
+  padding-bottom: 5px;
+  position: relative;
+}
+.product-content-box .product-more-info {
+  width: 100%;
+  float: left;
+  position: relative;
+}
+.warranty-default-box {
+  margin-bottom: 10px;
+  float: left;
+  width: 100%;
+}
+.sale-box {
+  width: 100%;
+  float: left;
+  border: 1px solid #b8a165;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 6px 0;
+  position: relative;
+}
+.product-messsage {
+  float: left;
+  line-height: 20px;
+  margin: 0 0 10px;
+  font-weight: 700;
+  clear: both;
+  width: 100%;
+}
+.product-messsage.hidden-promotion {
+  position: absolute;
+  font-size: 15px;
+  font-weight: 700;
+}
+.product-address {
+  width: 100%;
+  float: left;
+  margin-bottom: 10px;
+}
+.buy-box {
+  width: 100%;
+  float: left;
+}
+.installment {
+  margin-top: 10px;
+  float: left;
+  width: 100%;
+}
+a {
+  text-decoration: none;
+  color: #000;
+}
+.installment .installment-btn {
+  background: #5d83db;
+  display: flex;
+  width: 100%;
+  padding: 18px 0 10px 0;
+  color: #fff;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 5px;
+  flex-wrap: wrap;
+  justify-content: center;
+  box-shadow: 0 0 2px 0 rgb(0 0 0 / 58%);
+}
+.installment .installment-btn span.title {
+  flex: 0 0 100%;
+  width: 100%;
+  font-weight: 700;
+}
+.sale-box .sale-box-title {
+  position: absolute;
+  background: #fff;
+  font-size: 16px;
+  padding: 2px 10px;
+  left: 30px;
+  border: 1px solid #b8a165;
+  border-radius: 5px;
+  color: #000;
+  font-weight: 700;
+  margin: -20px 0 0 0;
+  display: block;
+}
+ul {
+  list-style: none;
+}
+.sale-box li {
+  padding: 5px 0 0 5px;
+  line-height: 18px;
+  position: relative;
+}
+.sale-box li a {
+  color: #00f;
+}
+.sale-box li span {
+  color: red;
+}
+.warranty-default-box > p {
+  line-height: 21px;
+}
+.warranty-default-box > p:not(:last-child) {
+  margin-bottom: 10px;
+}
+.warranty-default-box a {
+  color: #00f;
+}
+.warranty-default-box .warranty-content {
+  font-weight: 700;
+  display: inline-flex;
+  text-transform: capitalize;
+}
+.price-and-color {
+  float: left;
+  width: 100%;
+  position: relative;
+}
+.product-content-box .attribute-group {
+  float: left;
+  width: 100%;
+}
+.attribute-list {
+  float: left;
+  width: 100%;
+  margin: 5px 0;
+  position: relative;
+  display: inline;
+}
+.attribute-list .attribute-title {
+  width: 20%;
+  padding: 0 7px;
+  line-height: 30px;
+  float: left;
+}
+.product-content-box .attribute-list .attribute-title {
+  padding-left: 0px !important;
+}
+.attribute-list .attribute-value {
+  display: inline;
+  float: left;
+  width: 80%;
+}
+.attribute-list .attribute-item.color-item {
+  height: 30px;
+  width: 30px;
+}
+.attribute-list .attribute-value .attribute-item {
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  padding: 0 13px;
+  line-height: 30px;
+  white-space: nowrap;
+  cursor: pointer;
+  text-transform: uppercase;
+  color: #000;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  float: left;
+  position: relative;
+  font-size: 14px;
+}
+.warranty-list .price-warranty {
+  line-height: 30px;
+  float: left;
+}
+.product-price-content .warranty-list .attribute-title .title a {
+  display: none;
+}
+.product-price-box .color-list .attribute-value .color-name-selected {
+  margin-left: 16px;
+}
+.product-price-box .color-list .attribute-value .color-name-selected::before,
+.product-price-box .warranty-list .attribute-value .price-warranty::before,
+.product-price-content .warranty-list .attribute-title .title a::before {
+  content: "(";
+}
+.product-price-box .color-list .attribute-value .color-name-selected::after,
+.product-price-box .warranty-list .attribute-value .price-warranty::after,
+.product-price-content .warranty-list .attribute-title .title a::after {
+  content: ")";
+}
+.about-warranty {
+  position: relative;
+  float: left;
+}
+.about-warranty .about_warranty_link {
+  line-height: 30px;
+  margin-left: 7px;
+  color: #c69a39;
+  position: relative;
+}
+.about-warranty #text-tooltips {
+  position: absolute;
+  width: 600px;
+  text-align: justify;
+  bottom: 33px;
+  left: -113px;
+  background-color: #ffff;
+  z-index: 9999;
+  padding: 10px;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 0 5px 0 rgb(0 0 0 /36%);
+  -moz-box-shadow: 0 0 5px 0 rgba(0, 0, 0, 0.36);
+  box-shadow: 0 0 5px 0 rgb(0 0 0 / 36%);
+  opacity: 0;
+  visibility: hidden;
+}
+.about-warranty .outline-tips {
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  background: 0 0;
+  border: 10px solid rgb(0 0 0 / 16%);
+  bottom: -20px;
+  left: 117px;
+  border-right-color: transparent;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+}
+.about-warranty .tips {
+  width: 0px;
+  height: 0px;
+  position: relative;
+  background: 0 0;
+  border: 8px solid #fff;
+  top: -10px;
+  left: -9px;
+  border-right-color: transparent;
+  border-left-color: transparent;
+  border-bottom-color: transparent;
+}
+.about-warranty .tips-content p {
+  line-height: 18px;
+}
+.about-warranty .tips-content .tips-content-heading {
+  color: #f60000;
+  font-weight: 700;
+}
+.about-warranty .tips-content p:not(.tips-content-heading) {
+  color: #000;
+}
+#text-tooltips a {
+  color: #00f;
+  font-weight: 700;
+}
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.fa-question-circle-o::before {
+  content: "\f29c";
+}
+.product-price-box .color-list .color-name-selected {
+  float: left;
+  line-height: 30px;
+  text-transform: capitalize;
+  font-weight: 700;
+}
+.product-price-box .color-list .attribute-title .color-name-selected,
+.product-price-box .warranty-list .attribute-title .price-warranty {
+  display: none !important;
+}
+.product-price-box .color-list .attribute-title .color-name-selected::before,
+.product-price-box .warranty-list .attribute-title .price-warranty::before {
+  margin-right: 5px;
+  content: ":";
+  font-weight: 400;
+}
+.product-price-content .product-note-buy {
+  float: left;
+  font-weight: 700;
+  font-size: 15px;
+  padding: 5px 0;
+}
+.attribute-list .attribute-value .attribute-item .product-variation__tick {
+  width: 0.93rem;
+  height: 0.93rem;
+  position: absolute;
+  overflow: hidden;
+  right: -1px;
+  bottom: -1px;
+}
+.attribute-list
+  .attribute-value
+  .attribute-item
+  .product-variation__tick::before {
+  border: 0.9375rem solid transparent;
+  border-bottom-color: transparent;
+  content: "";
+  position: absolute;
+  right: -0.93rem;
+  bottom: 0px;
+  border-bottom-color: #c69a39;
+}
+.attribute-item .product-variation__tick .svg-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  position: relative;
+}
+.attribute-item .product-variation__tick .svg-icon.icon-tick-bold {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  color: #fff;
+  font-size: 8px;
+  fill: #fff;
+}
+.price_location {
+  float: left;
+  margin-right: 5px;
+}
+.price-and-color .price-product {
+  float: left;
+  display: block;
+  clear: both;
+}
+.status-box {
+  height: 40px;
+  line-height: 40px;
+  position: absolute;
+  right: 0px;
+  top: -10px;
+  color: #000;
+  font-weight: 400;
+}
+.fa-check-square-o::before {
+  content: "\f046";
+}
+.status-box i {
+  color: #c69a39;
+}
+.price-and-color .price {
+  font-size: 22px;
+  font-weight: 700;
+  color: #ac0719;
+  line-height: 26px;
+  float: left;
+  margin-right: 15px;
+}
+.price-and-color .price-old {
+  font-size: 18px;
+  color: #000;
+  line-height: 26px;
+  float: left;
+  text-decoration: line-through;
+}
+.price_location p {
+  line-height: 40px;
+  float: left;
+  color: #3e3e3e;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+.product-price-content select {
+  float: left;
+  height: 30px;
+  margin: 5px;
+  border-radius: 3px;
+  color: #3e3e3e;
+}
+.price_location .location {
+  float: left;
+  border: none;
+  background-color: #fff;
+  outline: 0;
+  color: #c69a39;
+  font-weight: 700;
+}
+.product-content-box .product-image-store-list .product-slide-image {
+  width: 100%;
+  float: left;
+}
+.product-store-list {
+  width: 100%;
+  float: left;
+}
+.product-content-box .product-store-list {
+  float: left;
+  margin: 10px 0;
+  width: 100%;
+}
+.product-content-box .product-store-list .title-store-list {
+  color: #000;
+  text-transform: capitalize;
+  font-weight: 700;
+}
+.product-content-box .product-store-list select.location {
+  padding: 5px;
+  width: 100%;
+  background-color: #fff;
+  margin-top: 7px;
+  border: 1px solid #794d0d;
+  border-radius: 5px;
+  outline: 0;
+  color: #794d0d;
+  font-weight: 700;
+  font-size: 14px;
+}
+.product-content-box .product-store-list .store-list {
+  background-color: #f6f6f6;
+  padding: 5px 0;
+  line-height: 17px;
+  text-align: justify;
+  overflow-y: auto;
+}
+.product-content-box .product-store-list .store-list ul {
+  list-style: circle;
+}
+.product-content-box .product-store-list .store-list .store {
+  margin: 0 20px 5px;
+}
+.instock {
+  color: blue;
+}
+.product_image {
+  width: 100%;
+  float: left;
+  margin-bottom: 20px;
+}
+.v2-product-image {
+  height: 262px !important;
+}
+.v2-product-image li {
+  height: 100%;
+}
+.product_image li {
+  display: none;
+  list-style: none;
+}
+.product_image li.active {
+  display: block;
+}
+.product_image img {
+  display: block;
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  margin: 0 auto;
+}
+.v2-product-image li img {
+  height: auto;
+}

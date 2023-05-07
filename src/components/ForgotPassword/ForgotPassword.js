@@ -1,53 +1,46 @@
 import "./ForgotPassword.css";
 
 function Register() {
-  
-
   return (
-    <div
-      style={{
-        display: "flex",
-        background: 'url("assets/img/login.jpg")',
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        width: "100%",
-        height: "100vh",
-      }}
-    >
-      <form
-        className="formLogin"
-        style={{ border: "1px solid #ccc" }}
-      >
-        <div className="container">
-          <h1 className="title_text">QUÊN MẬT KHẨU</h1>
-          <label htmlFor="phone">
-            <b>Số điện thoại</b>
-          </label>
-          <input
-            type="tel"
-            placeholder="Nhập số điện thoại"
-            name="phone"
-            required
-          />
-           <label htmlFor="phone">
-            <b>Liên hệ</b>
-          </label>
-          <textarea
-            type="textarea"
-            placeholder="Liên hệ"
-            name="phone"
-            required
-          />
-          <div className="clearfix">
-            <button
-              type="submit"
-              style={{ marginTop: "40px", marginBottom: "40px" }}
-            >
-              Gửi
-            </button>
+    <div className="body">
+      <div className="mp-pusher" id="mp-pusher">
+        <div className="container clearfix">
+          <div className="v2-login-area">
+            <form className="form-signin" action="" method="post">
+              <input
+                name="_token"
+                type="hidden"
+                value="z7s49TnKKUC0fODRHrzTL1gKJuDGGYZskdg5UN3G"
+              />
+              <div className="form-signin-heading text-center">
+                <h1 className="sign-title">Quên mật khẩu</h1>
+              </div>
+              <div className="v2-login-wrap">
+                <input
+                  name="email"
+                  className="form-control"
+                  autofocus=""
+                  required=""
+                  type="email"
+                  placeholder="Nhập Gmail"
+                  value=""
+                />
+                <button className="btn btn-lg btn-login" type="submit">
+                  Gửi
+                </button>
+              </div>
+              <div className="v2-login-bottom">
+                <span className="v2-left">
+                  <span className="v2-hide">Trở về</span>
+                  <a className="v2-register-now" href="/login">
+                    ( Đăng nhập )
+                  </a>
+                </span>
+              </div>
+            </form>
           </div>
         </div>
-      </form>
+      </div>
     </div>
   );
 }

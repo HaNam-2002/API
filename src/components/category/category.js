@@ -21,24 +21,22 @@ function Category({ onCategoryClick }) {
   };
 
   return (
-    <div className="mainmenu-area">
-      <div className="container">
-        <div className="row">
-          <div className="navbar-collapse collapse">
-            <ul className="nav navbar-nav">
-              {filteredCategories.map(({ cid, cname }) => (
-                <li key={cid}>
-                  <button
-                    className="cate_item"
-                    onClick={() => handleCategoryClick(cid)}
-                  >
-                    {cname}
-                  </button>
-                </li>
+    <div className="body">
+      <div className="box-filter top-box block-scroll-main cate-42">
+        <section>
+          <div className="box-quicklink block-scroll-main">
+            <div className="lst-quickfilter q-manu">
+              {filteredCategories.map(({ cid, cname, cimage }) => (
+                <a
+                  onClick={() => handleCategoryClick(cid)}
+                  className="box-quicklink__item bd-radius quicklink-logo"
+                >
+                  <img width="30" className="no-text" src={cimage} />
+                </a>
               ))}
-            </ul>
+            </div>
           </div>
-        </div>
+        </section>
       </div>
     </div>
   );

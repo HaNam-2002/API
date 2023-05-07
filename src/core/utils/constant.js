@@ -1,4 +1,4 @@
 export const API_URL = {
-    "prod": "",
-    "dev": "http://localhost:8083/"
-}
+  prod: "",
+  dev: "http://localhost:8083/",
+};

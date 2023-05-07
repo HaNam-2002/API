@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 import "./CategoryManager.css";
 
-function CategoryTable(category) {
+function CategoryTable() {
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [categories, setCategories] = useState([]);
   const [editCName, setEditCName] = useState("");
+  const [editCimage, setEditCimage] = useState("");
+  
 
   useEffect(() => {
     fetch("http://localhost:8083/categories/all")
@@ -34,6 +36,7 @@ function CategoryTable(category) {
   const handleEditCategory = (index) => {
     const updatedCategory = {
       cname: editCName,
+      cimage: editCimage,
     };
 
     const cid = categories[index].cid;
@@ -68,6 +71,9 @@ function CategoryTable(category) {
           <th className="cname" style={{ width: "120%" }}>
             Name
           </th>
+          <th className="cname" style={{ width: "120%" }}>
+            URl
+          </th>
           <th></th>
         </tr>
       </thead>
@@ -76,6 +82,7 @@ function CategoryTable(category) {
           <tr key={index}>
             <td>{category.cid}</td>
             <td>{category.cname}</td>
+            <img className="image_edit" src={category.cimage} alt="Lỗi" style={{width: "400px"}} />
             <td>
               <button
                 className="w3-red button_admin"
@@ -126,6 +133,19 @@ function CategoryTable(category) {
                   type="text"
                   value={editCName}
                   onChange={(e) => setEditCName(e.target.value)}
+                  required
+                />
+              </p>
+              <p>
+                <label className="w3-text-blue">
+                  <b>URL</b>
+                </label>
+                <input
+                  className="w3-input w3-border"
+                  name="cImage"
+                  type="text"
+                  value={editCimage}
+                  onChange={(e) => setEditCimage(e.target.value)}
                   required
                 />
               </p>

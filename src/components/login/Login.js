@@ -33,70 +33,63 @@ function Login() {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        background: 'url("assets/img/login.jpg")',
-        backgroundSize: "cover",
-        backgroundRepeat: "no-repeat",
-        width: "100%",
-        height: "100vh",
-      }}
-    >
-      <form className="formLogin" onSubmit={handleSubmit} method="post">
-        <div className="textcontainer">
-          <h1 className="titleText">ĐĂNG NHẬP</h1>
-        </div>
+    <div className="body">
+      <div className="mp-pusher" id="mp-pusher">
+        <div className="container clearfix">
+          <div className="v2-login-area">
+            <form className="form-signin" onSubmit={handleSubmit} method="post">
+              <input
+                name="_token"
+                type="hidden"
+                value="z7s49TnKKUC0fODRHrzTL1gKJuDGGYZskdg5UN3G"
+              />
+              <div className="form-signin-heading text-center">
+                <h1 className="sign-title">LOGIN</h1>
+              </div>
+              <div className="v2-login-wrap">
+                <input
+                  className="form-control"
+                  id="user"
+                  type="text"
+                  placeholder="Nhập tên đăng nhâp"
+                  name="user"
+                  required
+                  value={user}
+                  onChange={(e) => setuser(e.target.value)}
+                />
+                <input
+                  className="form-control"
+                  id="pass"
+                  type="password"
+                  placeholder="Nhập mật khẩu"
+                  name="pass"
+                  required
+                  onChange={(e) => setpass(e.target.value)}
+                />
+                <button className="btn btn-lg btn-login" type="submit">
+                  Đăng nhập
+                </button>
+              </div>
 
-        <div className="container">
-          <label htmlFor="user">
-            <b>Tên đăng nhập</b>
-          </label>
-          <input
-            id="user"
-            type="text"
-            placeholder="Nhập tên đăng nhâp"
-            name="user"
-            required
-            value={user}
-            onChange={(e) => setuser(e.target.value)}
-          />
-
-          <label htmlFor="pass">
-            <b>Mật khẩu</b>
-          </label>
-          <input
-            id="pass"
-            type="password"
-            placeholder="Nhập mật khẩu"
-            name="pass"
-            required
-            onChange={(e) => setpass(e.target.value)}
-          />
-
-          <button type="submit">Đăng nhập</button>
-          <label>
-            <input type="checkbox" checked="checked" name="remember" /> Remember
-            me
-          </label>
+              <div className="v2-login-bottom">
+                <span className="v2-left">
+                  <span className="v2-hide">Chưa có tài khoản</span>
+                  <a className="v2-register-now" href="register">
+                    {" "}
+                    ( Đăng ký ngay )
+                  </a>
+                </span>
+                <span className="v2-right">
+                  <a className="v2-remember-password" href="ForgotPassword">
+                    {" "}
+                    Quên mật khẩu ?
+                  </a>
+                </span>
+              </div>
+            </form>
+          </div>
         </div>
-        <div className="login_mxh">
-          <button className="fb" type="button">
-            Facebook
-          </button>
-          <button className="gg" type="button">
-            Google
-          </button>
-        </div>
-        <div className="container">
-          <span className="psw">
-            Quên <a href="ForgotPassword"> Mật khẩu?</a>
-          </span>
-          <span className="psw">
-            <a href="register">Đăng ký </a>
-          </span>
-        </div>
-      </form>
+      </div>
     </div>
   );
 }

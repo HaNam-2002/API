@@ -18,15 +18,17 @@ function Header() {
             <div className="user-menu">
               <ul>
                 <li>
-                  <a href="/ChangePass">
-                    <i className="fa fa-user"></i> Đổi mật khẩu
+                  <a href="/">
+                    <i className="fa fa-home"></i>Trang chủ
                   </a>
                 </li>
-                <li>
-                  <a href="a">
-                    <i className="fa fa-heart"></i> Yêu thích
-                  </a>
-                </li>
+                {isAuthenticated && (
+                  <li>
+                    <a href="/ChangePass">
+                      <i className="fa fa-key"></i> Đổi mật khẩu
+                    </a>
+                  </li>
+                )}
                 {isAuthenticated && (
                   <li>
                     <a href="personal">

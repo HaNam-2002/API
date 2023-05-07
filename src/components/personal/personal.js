@@ -11,14 +11,14 @@ function Personal() {
   function updateAccount(e) {
     e.preventDefault();
     const requestOptions = {
-      method: 'PUT',
+      method: "PUT",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ name, gmail, phone, address })
+      body: JSON.stringify({ name, gmail, phone, address }),
     };
     fetch(`http://localhost:8083/accounts/update/${user.uid}`, requestOptions)
-      .then(response => {
+      .then((response) => {
         if (response.ok) {
           alert("Cập nhật tài khoản thành công!");
           const updatedUser = {
@@ -26,15 +26,15 @@ function Personal() {
             name,
             gmail,
             phone,
-            address
+            address,
           };
           localStorage.setItem("user", JSON.stringify(updatedUser));
         } else {
           alert("Cập nhật tài khoản thất bại!");
         }
       })
-      .catch(error => {
-        console.error('Error:', error);
+      .catch((error) => {
+        console.error("Error:", error);
       });
   }
 
@@ -50,11 +50,7 @@ function Personal() {
                     <p>Thông tin tài khoản</p>
                   </div>
                   <form className="form-signin" onSubmit={updateAccount}>
-                    <input
-                      name="_token"
-                      type="hidden"
-                      value=""
-                    />
+                    <input name="_token" type="hidden" value="" />
 
                     <div className="form-group">
                       <label>Họ và tên</label>
@@ -100,7 +96,10 @@ function Personal() {
                         onChange={(e) => setAddress(e.target.value)}
                       />
                     </div>
-                    <button className="btn btn-lg btn-primary btn-block" type="submit">Cập nhật</button>
+                    <div className="form-group">
+                      <label></label>
+                      <button type="submit">Cập nhật</button>
+                    </div>
                   </form>
                 </div>
               </div>

@@ -1,9 +1,15 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import CategoryTable from "./CategoryTable";
+import "./CategoryManager.css";
 
-const CategoryManager = () => {
-  const [showAddModal, setShowAddModal] = useState(false);
+function CategoryManager() {
+  const [image, setImage] = useState(null);
   const [categories, setCategories] = useState([]);
+
+  const handleImageChange = (event) => {
+    const image = event.target.value;
+    setImage(image);
+  };
 
   useEffect(() => {
     fetch("http://localhost:8083/categories/all")
@@ -12,56 +18,57 @@ const CategoryManager = () => {
         setCategories(data);
       })
       .catch((error) => {
-        console.error(error);
+        console.error("Error fetching categories: ", error);
       });
   }, []);
 
-  const handleCategorySubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
-    const data = { cname: form.cname.value };
+    const data = new FormData(form);
+    data.append("imgUrl", image); // Thêm Image URL vào FormData
     fetch("http://localhost:8083/categories/add", {
       method: "POST",
-      body: JSON.stringify(data),
+      body: JSON.stringify(Object.fromEntries(data)),
       headers: {
         "Content-Type": "application/json",
       },
     })
       .then((response) => {
         if (response.ok) {
-          alert("Thêm sản phẩm thành công!");
+          alert("Danh mục đã được thêm thành công!");
           window.location.reload();
           form.reset();
+          setImage(null);
         } else {
           alert("Có lỗi xảy ra khi thêm danh mục.");
         }
       })
       .catch((error) => {
-        console.error(error);
-        alert("Thêm mới thất bại");
+        alert("Có lỗi xảy ra khi thêm danh mục.");
       });
-    setShowAddModal(false);
   };
 
   return (
     <div style={{ marginLeft: "70px" }}>
       <div className="w3-container"></div>
-      <h1 className="title">QUẢN LÍ DANH MỤC</h1>
-      <button className="button w3-blue" onClick={() => setShowAddModal(true)}>
+      <h1 className="title">QUẢN LÝ DANH MỤC</h1>
+      <button
+        className="button w3-blue button_admin"
+        onClick={() =>
+          (document.getElementById("id01").style.display = "block")
+        }
+      >
         Thêm danh mục
       </button>
-      <div className="table_cate">
-        <CategoryTable categories={categories} />
-      </div>
-      <div
-        id="addModal"
-        className="w3-modal"
-        style={{ display: showAddModal ? "block" : "none" }}
-      >
+      <CategoryTable categories={categories} />
+      <div id="id01" className="w3-modal" style={{ paddingTop: "50px" }}>
         <div className="w3-modal-content w3-card-4 w3-animate-zoom">
           <header className="w3-container w3-blue">
             <span
-              onClick={() => setShowAddModal(false)}
+              onClick={() =>
+                (document.getElementById("id01").style.display = "none")
+              }
               className="w3-button w3-blue w3-xlarge w3-display-topright"
             >
               ×
@@ -69,19 +76,45 @@ const CategoryManager = () => {
             <h2 className="title">THÊM DANH MỤC</h2>
           </header>
           <div className="w3-container w3-light-grey w3-padding">
-            <form
-              className="w3-container w3-card-4"
-              onSubmit={handleCategorySubmit}
-            >
+            <form className="w3-container w3-card-4" onSubmit={handleSubmit}>
+              <p>
+                <label className="w3-text-blue">
+                  <b>Image URL</b>
+                </label>
+                <input
+                  className="w3-input"
+                  type="text"
+                  name="cimage"
+                  required
+                  onChange={handleImageChange}
+                />
+              </p>
+              {image && (
+                <p className="image_edit">
+                  <img
+                    className="cimage"
+                    src={image}
+                    alt="Selected image"
+                    style={{
+                      maxWidth: "150px"
+                    }}
+                  />
+                </p>
+              )}
               <p>
                 <label className="w3-text-blue">
                   <b>Tên danh mục</b>
                 </label>
-                <input className="cname" name="cname" type="text" required />
+                <input
+                  className="w3-text-grey w3-border w3-padding"
+                  type="text"
+                  name="cname"
+                  required
+                />
               </p>
               <p>
-                <button type="submit" className="w3-btn w3-blue button_admin">
-                  XONG
+                <button className="button w3-blue button_admin" type="submit">
+                  Thêm
                 </button>
               </p>
             </form>
@@ -90,6 +123,7 @@ const CategoryManager = () => {
       </div>
     </div>
   );
-};
+}
 
 export default CategoryManager;
+

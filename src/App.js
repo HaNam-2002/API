@@ -13,6 +13,7 @@ import CartManagerPage from "./pages/AdminPages/CartManagerPage";
 import CategoryManagerPage from "./pages/AdminPages/CategoryManagerPage";
 import CartPage from "./pages/Cartpage";
 import PersonalPage from "./pages/personalPage";
+import LoginPage from "./pages/LoginPage";
 
 function App() {
   return (
@@ -28,7 +29,7 @@ function App() {
           <Route path="/ForgotPassword" element={<ForgotPassPage />} />
         </Routes>
         <Routes>
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<LoginPage />} />
         </Routes>
         <Routes>
           <Route path="/manager" element={<ProductManagerPage />} />

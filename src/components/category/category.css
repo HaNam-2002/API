@@ -1,5 +1,112 @@
-.cate_item {
-  margin-right: 10px;
-  color: #888;
-  font-weight: bold;
-}
+  .lst-quickfilter {
+      	display: flex;
+      	flex-wrap: wrap;
+      }
+      .lst-quickfilter.q-manu {
+      	width: 100%;
+		    margin-left: 33px;
+      }
+      .box-quicklink {
+      	display: flex;
+      	flex-wrap: wrap;
+      }
+      section {
+      	width: 100%;
+      	max-width: 1200px;
+      	margin: auto;
+      }
+      section {
+      	position: relative;
+      }
+      section {
+      	max-width: 1200px;
+      	width: 100%;
+      	min-width: 980px;
+      	position: relative;
+      }
+      .box-filter {
+      	position: relative;
+      	font-size: 0px;
+      	padding-top: 10px;
+      }
+      .body, input, button, option, textarea, label, select, legend, h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+      	font: 14px/18px Arial, Helvetica, sans-serif;
+      	color: #333;
+      	outline: none;
+      }
+      .body {
+      	min-width: 1024px;
+      }
+      .body, input, button, option, textarea, label, select, legend, h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+      	font: 14px/18px Arial, Helvetica, sans-serif;
+      	color: #333;
+      	outline: none;
+      }
+      .body {
+      	min-width: 1024px;
+      }
+      .body {
+      	min-width: 1024px;
+      	overflow-x: hidden;
+      }
+      .body, input, button, option, textarea, label, legend, h1, h2, h3, h4, h5, h6, h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
+      	font: 14px/18px Helvetica, Arial, "DejaVu Sans", "Liberation Sans", Freesans, sans-serif;
+      	color: #333;
+      	outline: none;
+      	zoom: 1;
+      }
+      :root {
+      	--product-price-color:#e83a45: ;
+      }
+      a {
+      	text-decoration: none;
+      	transition: .2s;
+      	color: #288ad6;
+      }
+      a {
+      	text-decoration: none;
+      	transition: .2s;
+      	color: #288ad6;
+      }
+      a {
+      	color: #288ad6;
+      }
+      a {
+      	text-decoration: none;
+      }
+      .box-quicklink__item {
+      	align-items: center;
+      	border: 1px solid #e0e0e0;
+      	border-radius: 4px;
+      	color: #333;
+      	display: flex;
+      	font-size: 14px;
+      	line-height: 13px;
+      	margin-right: 8px;
+      	margin-bottom: 10px;
+      	min-height: 36px;
+      	max-height: 36px;
+      	padding: 6px 13px;
+      	vertical-align: top;
+      }
+      .box-quicklink__item.bd-radius {
+      	border-radius: 52px;
+      }
+      img {
+      	border: 0;
+      }
+      img {
+      	border: 0;
+      }
+      img {
+      	border: 0;
+      }
+      .box-quicklink__item img {
+      	vertical-align: middle;
+      	width: auto;
+      	height: 20px;
+      	margin-right: 5px;
+      }
+      .box-quicklink__item img.no-text {
+      	margin-right: 0px;
+      }
