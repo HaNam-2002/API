@@ -17,7 +17,7 @@ function Personal() {
       },
       body: JSON.stringify({ name, gmail, phone, address }),
     };
-    fetch(`http://localhost:8083/accounts/update/${user.uid}`, requestOptions)
+    fetch(`https://nhomntm.et.r.appspot.com/accounts/update/${user.uid}`, requestOptions)
       .then((response) => {
         if (response.ok) {
           alert("Cập nhật tài khoản thành công!");

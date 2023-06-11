@@ -14,7 +14,7 @@ function ProductTable({ categories }) {
   const [image, setImage] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:8083/products")
+    fetch("https://nhomntm.et.r.appspot.com/products")
       .then((response) => response.json())
       .then((data) => {
         console.log(data);
@@ -24,7 +24,7 @@ function ProductTable({ categories }) {
   }, []);
 
   function deleteOne(pid) {
-    fetch(`http://localhost:8083/products/delete/${pid}`, {
+    fetch(`https://nhomntm.et.r.appspot.com/products/delete/${pid}`, {
       method: "DELETE",
     })
       .then((response) => {
@@ -42,7 +42,7 @@ function ProductTable({ categories }) {
     const form = event.target;
     const data = new FormData(form);
     fetch(
-      `http://localhost:8083/products/update/${product.pid}/${data.get("cID")}`,
+      `https://nhomntm.et.r.appspot.com/products/update/${product.pid}/${data.get("cID")}`,
       {
         method: "PUT",
         body: JSON.stringify(Object.fromEntries(data)),

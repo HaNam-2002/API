@@ -21,7 +21,7 @@ function PasswordChange() {
       // Gửi yêu cầu API đến server để thay đổi mật khẩu
       const user = JSON.parse(window.localStorage.getItem("user"));
       const response = await axios.put(
-        `http://localhost:8083/accounts/changePassword/${user.uid}`,
+        `https://nhomntm.et.r.appspot.com/accounts/changePassword/${user.uid}`,
         {
           oldPassword,
           newPassword,

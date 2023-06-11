@@ -9,7 +9,7 @@ function CartItem() {
     const queryParams = new URLSearchParams(location.search);
     const pID = queryParams.get("id");
     if (pID) {
-      fetch(`http://localhost:8083/products/${pID}`)
+      fetch(`https://nhomntm.et.r.appspot.com/products/${pID}`)
         .then((response) => response.json())
         .then((data) => setProduct(data));
     }

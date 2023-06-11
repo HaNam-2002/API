@@ -3,9 +3,8 @@ import "./allProduct.css";
 function AllProduct({ searchKeyword, categoryId }) {
   const [products, setProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
-
   useEffect(() => {
-    fetch("http://localhost:8083/products")
+    fetch("https://nhomntm.et.r.appspot.com/products")
       .then((response) => response.json())
       .then((data) => {
         setProducts(data);
@@ -13,13 +12,11 @@ function AllProduct({ searchKeyword, categoryId }) {
       })
       .catch((error) => console.error(error));
   }, []);
-
   useEffect(() => {
     const filtered = products.filter((product) => {
-      // If categoryId is present and product's categoryId is different, exclude the product
       if (categoryId && product.category.cid !== categoryId) {
         return false;
-      } // Check searchKeyword
+      } 
       return product.name.toLowerCase().includes(searchKeyword.toLowerCase());
     });
 

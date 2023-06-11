@@ -7,7 +7,7 @@ function ProductContent(props) {
     const queryParams = new URLSearchParams(window.location.search);
     const pID = queryParams.get("id");
     if (pID) {
-      fetch(`http://localhost:8083/products/${pID}`)
+      fetch(`https://nhomntm.et.r.appspot.com/products/${pID}`)
         .then((response) => response.json())
         .then((data) => setProduct(data));
     } else {
@@ -16,7 +16,7 @@ function ProductContent(props) {
   });
   return (
     <div className="body">
-      <div className="mp-pusher" id="mp-pusher" style={{ marginTop: "30px" }}>
+      <div className="mp-pusher" id="mp-pusher">
         <section className="container">
           <div className="product-content-box">
             <div className="product-image-store-list">

@@ -4,7 +4,7 @@ function Sidebar() {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8083/products")
+    fetch("https://nhomntm.et.r.appspot.com/products")
       .then((response) => response.json())
       .then((data) => setProducts(data))
       .catch((error) => console.log(error));

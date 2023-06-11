@@ -6,9 +6,10 @@ function CategoryTable() {
   const [categories, setCategories] = useState([]);
   const [editCName, setEditCName] = useState("");
   const [editCimage, setEditCimage] = useState("");
+  
 
   useEffect(() => {
-    fetch("http://localhost:8083/categories/all")
+    fetch("https://nhomntm.et.r.appspot.com/categories/all")
       .then((response) => response.json())
       .then((data) => {
         setCategories(data);
@@ -20,7 +21,7 @@ function CategoryTable() {
   }, []);
 
   const handleDeleteCategory = (cID) => {
-    fetch(`http://localhost:8083/categories/delete/${cID}`, {
+    fetch(`https://nhomntm.et.r.appspot.com/categories/delete/${cID}`, {
       method: "DELETE",
     })
       .then((response) => {
@@ -39,7 +40,7 @@ function CategoryTable() {
     };
 
     const cid = categories[index].cid;
-    fetch(`http://localhost:8083/categories/update/${cid}`, {
+    fetch(`https://nhomntm.et.r.appspot.com/categories/update/${cid}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
@@ -64,22 +65,14 @@ function CategoryTable() {
     <table className="table" style={{ width: "70%" }}>
       <thead>
         <tr>
-          <th className="cID" style={{ width: "33%" }}>
+          <th className="cID" style={{ width: "20%" }}>
             cID
           </th>
-<<<<<<< HEAD
           <th className="cname" style={{ width: "30%" }}>
             Name
           </th>
           <th className="cimage" style={{ width: "100%" }}>
             URL
-=======
-          <th className="cname" style={{ width: "33%" }}>
-            Name
-          </th>
-          <th className="cname" style={{ width: "33%" }}>
-            Image
->>>>>>> c240f24b56e1f5e53010ca6024461a616644f583
           </th>
           <th></th>
         </tr>
@@ -89,15 +82,7 @@ function CategoryTable() {
           <tr key={index}>
             <td>{category.cid}</td>
             <td>{category.cname}</td>
-
-            <td>
-              <img
-                className="image_edit"
-                src={category.cimage}
-                alt="Lỗi"
-                style={{ width: "200px", margin: "auto" }}
-              />
-            </td>
+            <img className="image_edit" src={category.cimage} alt="Lỗi" style={{width: "400px"}} />
             <td>
               <button
                 className="w3-red button_admin"
