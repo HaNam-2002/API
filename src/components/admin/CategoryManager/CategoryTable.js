@@ -62,17 +62,17 @@ function CategoryTable() {
   };
 
   return (
-    <table className="table" style={{ width: "100%" }}>
+    <table className="table" style={{ width: "70%" }}>
       <thead>
         <tr>
           <th className="cID" style={{ width: "20%" }}>
             cID
           </th>
-          <th className="cname" style={{ width: "120%" }}>
+          <th className="cname" style={{ width: "30%" }}>
             Name
           </th>
-          <th className="cname" style={{ width: "120%" }}>
-            URl
+          <th className="cimage" style={{ width: "100%" }}>
+            URL
           </th>
           <th></th>
         </tr>

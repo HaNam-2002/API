@@ -22,6 +22,11 @@ function Header() {
                     <i className="fa fa-home"></i>Trang chủ
                   </a>
                 </li>
+                <li>
+                  <a href="/contact">
+                    <i className=""></i>Contact-US
+                  </a>
+                </li>
                 {isAuthenticated && (
                   <li>
                     <a href="/ChangePass">
@@ -83,7 +88,7 @@ function Header() {
                     data-toggle="dropdown"
                     data-hover="dropdown"
                     className="dropdown-toggle"
-                    href="a"
+                    href="a"n
                   >
                     <span className="key">language :</span>
                     <span className="value">English </span>

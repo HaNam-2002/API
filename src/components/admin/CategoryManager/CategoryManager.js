@@ -12,7 +12,7 @@ function CategoryManager() {
   };
 
   useEffect(() => {
-    fetch("http://localhost:8083/categories/all")
+    fetch("https://nhomntm.et.r.appspot.com/categories/all")
       .then((response) => response.json())
       .then((data) => {
         setCategories(data);

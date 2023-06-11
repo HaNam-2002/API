@@ -1,6 +1,10 @@
 import "./Contact.css";
 
 function Contact() {
+  function handleClick() {
+    alert(" Chúng tôi sẽ sớm phản hồi lại điều này");
+    window.location.href = "http://localhost:3000/";
+  }
   return (
     <div className="background">
       <div className="container">
@@ -50,7 +54,7 @@ function Contact() {
                 </div>
                 <div className="app-form-group buttons">
                   <button className="app-form-button">CANCEL</button>
-                  <button className="app-form-button">SEND</button>
+                  <button className="app-form-button" onClick={handleClick}>SEND</button>
                 </div>
               </div>
             </div>
