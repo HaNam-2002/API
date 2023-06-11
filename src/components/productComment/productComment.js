@@ -3,7 +3,7 @@ import "./productComment.css";
 function productComment() {
   return (
     <div className="body">
-      <div className="mp-pusher" id="mp-pusher">
+      <div className="mp-pusher" id="mp-pusher" style={{ marginTop: "0px" }}>
         <section className="container">
           <div className="product-content-box fix-content-right">
             <div className="product-content-left">
@@ -290,8 +290,8 @@ function productComment() {
                             </div>
                           </div>
                           <div className="comment-content">
-                            Mobilecity cám ơn anh đã ủng hộ và gửi đánh giá về
-                            dịch vụ của MobileCity, chúc anh một ngày tốt lành ạ
+                            Chúng tôi cám ơn anh đã ủng hộ và gửi đánh giá về
+                            dịch vụ của chúng tôi, chúc anh một ngày tốt lành ạ
                           </div>
                           <div className="comment-footer">
                             <p className="comment-like" data-id="314804">

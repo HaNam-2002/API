@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 
 function SideBar() {
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    localStorage.getItem("authenticated") || false
+  );
+
+  function logout() {
+    localStorage.clear();
+    setIsAuthenticated(false);
+  }
+
   return (
     <div
       className="w3-sidebar w3-bar-block w3-blue w3-xxlarge"
@@ -15,7 +24,7 @@ function SideBar() {
       <a href="cate_manager" className="w3-bar-item w3-button">
         <i className="fa fa-trademark"></i>
       </a>
-      <a href="/" className="w3-bar-item w3-button">
+      <a href="/" onClick={logout} className="w3-bar-item w3-button">
         <i className="fa fa-sign-out"></i>
       </a>
     </div>

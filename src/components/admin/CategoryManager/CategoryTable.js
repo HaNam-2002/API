@@ -6,7 +6,6 @@ function CategoryTable() {
   const [categories, setCategories] = useState([]);
   const [editCName, setEditCName] = useState("");
   const [editCimage, setEditCimage] = useState("");
-  
 
   useEffect(() => {
     fetch("http://localhost:8083/categories/all")
@@ -65,14 +64,22 @@ function CategoryTable() {
     <table className="table" style={{ width: "70%" }}>
       <thead>
         <tr>
-          <th className="cID" style={{ width: "20%" }}>
+          <th className="cID" style={{ width: "33%" }}>
             cID
           </th>
+<<<<<<< HEAD
           <th className="cname" style={{ width: "30%" }}>
             Name
           </th>
           <th className="cimage" style={{ width: "100%" }}>
             URL
+=======
+          <th className="cname" style={{ width: "33%" }}>
+            Name
+          </th>
+          <th className="cname" style={{ width: "33%" }}>
+            Image
+>>>>>>> c240f24b56e1f5e53010ca6024461a616644f583
           </th>
           <th></th>
         </tr>
@@ -82,7 +89,15 @@ function CategoryTable() {
           <tr key={index}>
             <td>{category.cid}</td>
             <td>{category.cname}</td>
-            <img className="image_edit" src={category.cimage} alt="Lỗi" style={{width: "400px"}} />
+
+            <td>
+              <img
+                className="image_edit"
+                src={category.cimage}
+                alt="Lỗi"
+                style={{ width: "200px", margin: "auto" }}
+              />
+            </td>
             <td>
               <button
                 className="w3-red button_admin"
